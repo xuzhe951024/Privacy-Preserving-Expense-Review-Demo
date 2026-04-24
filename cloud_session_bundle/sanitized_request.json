@@ -1,0 +1,15 @@
+{
+  "sample_id": "exp_1000",
+  "session_id": "exp_1000-66a21619",
+  "sanitized_text": "Employee <PERSON_1> recorded a rideshare expense of <AMOUNT_1> on <DATE_1> with <VENDOR_1>. Employee ID <EMPLOYEE_ID_1>, invoice <INVOICE_ID_1>, card ending <CARD_LAST4_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>. Receipt attachment missing and the note says the expense might belong to a shared ride.",
+  "public_context": {
+    "workflow_type": "expense_review",
+    "expense_type": "taxi_rideshare",
+    "currency": "USD",
+    "policy_key": "taxi_cap_usd",
+    "receipt_attached": false,
+    "requires_sum": false,
+    "requires_cap_validation": true,
+    "note_is_ambiguous": true
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "op_id": "op_001",
+    "op": "compare_policy_cap",
+    "ciphertext_handle": "AMOUNT_1",
+    "right_policy_key": "taxi_cap_usd",
+    "interpreted_result": "within_cap"
+  },
+  {
+    "op_id": "op_002",
+    "op": "subtract",
+    "ciphertext_handle": "AMOUNT_1",
+    "right_policy_key": "taxi_cap_usd",
+    "interpreted_result": -10
+  },
+  {
+    "op_id": "op_003",
+    "op": "compare_submission_window",
+    "ciphertext_handle": "DATE_1",
+    "right_policy_key": "submission_window_days",
+    "interpreted_result": true
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HE Call Plan",
+  "type": "object",
+  "required": [
+    "workflow_type",
+    "decision",
+    "non_sensitive_reasoning",
+    "requested_he_ops",
+    "missing_items"
+  ],
+  "properties": {
+    "workflow_type": {
+      "type": "string",
+      "const": "expense_review"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "needs_he_ops",
+        "needs_human_review"
+      ]
+    },
+    "non_sensitive_reasoning": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requested_he_ops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "op_id",
+          "op",
+          "return_as"
+        ],
+        "properties": {
+          "op_id": {
+            "type": "string"
+          },
+          "op": {
+            "type": "string",
+            "enum": [
+              "fhe_compare_policy_cap",
+              "fhe_subtract_policy_cap",
+              "fhe_sum_amounts",
+              "fhe_compare_date_window",
+              "fhe_min_policy_cap"
+            ]
+          },
+          "ciphertext_handle": {
+            "type": "string"
+          },
+          "ciphertext_handles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "right_policy_key": {
+            "type": "string"
+          },
+          "result_handle": {
+            "type": "string"
+          },
+          "return_as": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "ciphertext_handle"
+            ]
+          },
+          {
+            "required": [
+              "ciphertext_handles"
+            ]
+          }
+        ],
+        "additionalProperties": true
+      }
+    },
+    "missing_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

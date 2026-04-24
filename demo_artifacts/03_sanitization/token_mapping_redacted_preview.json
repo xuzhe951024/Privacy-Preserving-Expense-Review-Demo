@@ -1,0 +1,56 @@
+[
+  {
+    "token": "PERSON_1",
+    "entity_type": "PERSON",
+    "source_hash_prefix": "4aea1aabadbc",
+    "recoverable": true
+  },
+  {
+    "token": "AMOUNT_1",
+    "entity_type": "AMOUNT",
+    "source_hash_prefix": "cd1d5096a886",
+    "recoverable": true
+  },
+  {
+    "token": "DATE_1",
+    "entity_type": "DATE",
+    "source_hash_prefix": "d67425239ed6",
+    "recoverable": true
+  },
+  {
+    "token": "VENDOR_1",
+    "entity_type": "VENDOR",
+    "source_hash_prefix": "599e563967b6",
+    "recoverable": true
+  },
+  {
+    "token": "EMPLOYEE_ID_1",
+    "entity_type": "EMPLOYEE_ID",
+    "source_hash_prefix": "e81c3b75016b",
+    "recoverable": true
+  },
+  {
+    "token": "INVOICE_ID_1",
+    "entity_type": "INVOICE_ID",
+    "source_hash_prefix": "991cf7b84c63",
+    "recoverable": true
+  },
+  {
+    "token": "CARD_LAST4_1",
+    "entity_type": "CARD_LAST4",
+    "source_hash_prefix": "22e0da1c88c1",
+    "recoverable": true
+  },
+  {
+    "token": "EMAIL_1",
+    "entity_type": "EMAIL",
+    "source_hash_prefix": "a5c99200ad21",
+    "recoverable": true
+  },
+  {
+    "token": "PHONE_NUMBER_1",
+    "entity_type": "PHONE_NUMBER",
+    "source_hash_prefix": "cafc690c34bb",
+    "recoverable": true
+  }
+]

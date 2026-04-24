@@ -1,0 +1,14 @@
+edge_case,example,expected_behavior
+multiple_amounts,meal + tip + tax,Recognize multiple AMOUNT entities and validate the combined total.
+amount_date_adjacent,$450.00 on 2026-04-21,Keep AMOUNT and DATE boundaries separate.
+id_looks_like_amount,INV-2026-0048,Do not misclassify invoice IDs as AMOUNT.
+card_last4_vs_employee_id,"card ending 4812, E-4812",Keep CARD_LAST4 and EMPLOYEE_ID labels distinct.
+vendor_contains_number,Motel 6,Do not classify the number in the vendor name as AMOUNT or ID.
+markdown_email,Markdown bullet input,Preserve correct span indexes in formatted text.
+json_input,JSON string payload,Protect values without corrupting the structure.
+malformed_amount,$48O.15,Return needs_human_review for ambiguous numeric strings.
+missing_policy_cap,Unknown policy key,Return needs_human_review when policy metadata is incomplete.
+model_unavailable,GLiNER load failure,Rule fallback remains available and the degraded state is reported.
+long_text_chunking,Very long note body,Preserve offsets or degrade safely.
+overlapping_entities,john.miller@corp.example,EMAIL wins over a nested PERSON candidate.
+minimal_context_utility_loss,Sparse sanitized context,Mark utility loss and route to human review when needed.

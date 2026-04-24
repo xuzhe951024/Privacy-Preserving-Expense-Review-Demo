@@ -1,0 +1,19 @@
+{
+  "he_results": [
+    {
+      "op_id": "op_001",
+      "result_handle": "HE_BOOL_1",
+      "result_type": "encrypted_bool"
+    },
+    {
+      "op_id": "op_002",
+      "result_handle": "HE_CENTS_1",
+      "result_type": "encrypted_cents"
+    },
+    {
+      "op_id": "op_003",
+      "result_handle": "HE_BOOL_2",
+      "result_type": "encrypted_bool"
+    }
+  ]
+}

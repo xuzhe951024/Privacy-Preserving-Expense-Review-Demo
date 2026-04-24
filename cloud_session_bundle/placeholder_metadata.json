@@ -1,0 +1,96 @@
+{
+  "PERSON_1": {
+    "entity_type": "PERSON",
+    "placeholder": "<PERSON_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "gliner_heuristic",
+    "score": 0.64
+  },
+  "AMOUNT_1": {
+    "entity_type": "AMOUNT",
+    "placeholder": "<AMOUNT_1>",
+    "allowed_ops": [
+      "compare_policy_cap",
+      "sum",
+      "subtract"
+    ],
+    "allowed_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap",
+      "fhe_sum_amounts",
+      "fhe_min_policy_cap"
+    ],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "DATE_1": {
+    "entity_type": "DATE",
+    "placeholder": "<DATE_1>",
+    "allowed_ops": [
+      "compare_submission_window"
+    ],
+    "allowed_he_ops": [
+      "fhe_compare_date_window"
+    ],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "VENDOR_1": {
+    "entity_type": "VENDOR",
+    "placeholder": "<VENDOR_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_or_category",
+    "source": "gliner_heuristic",
+    "score": 0.56
+  },
+  "EMPLOYEE_ID_1": {
+    "entity_type": "EMPLOYEE_ID",
+    "placeholder": "<EMPLOYEE_ID_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "INVOICE_ID_1": {
+    "entity_type": "INVOICE_ID",
+    "placeholder": "<INVOICE_ID_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "CARD_LAST4_1": {
+    "entity_type": "CARD_LAST4",
+    "placeholder": "<CARD_LAST4_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "EMAIL_1": {
+    "entity_type": "EMAIL",
+    "placeholder": "<EMAIL_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  },
+  "PHONE_NUMBER_1": {
+    "entity_type": "PHONE_NUMBER",
+    "placeholder": "<PHONE_NUMBER_1>",
+    "allowed_ops": [],
+    "allowed_he_ops": [],
+    "policy_action": "tokenize_encrypt",
+    "source": "rule",
+    "score": 0.99
+  }
+}

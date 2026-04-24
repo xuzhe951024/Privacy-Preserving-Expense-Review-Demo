@@ -1,0 +1,18 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "44bf43473d6495f9c0ebab952446fee4137e5b97edd55729dde62f4505c38d36"
+  },
+  {
+    "path": "placeholder_metadata.json",
+    "sha256": "c83d2aa937f18500119e4479cc6c8164f4d65ed3352c568554d696c101a22607"
+  },
+  {
+    "path": "policy_public_summary.json",
+    "sha256": "a2938f17c1a9a62837db6bcdaf42b6349bef78ea8760755121fd7a1d39e5a6be"
+  },
+  {
+    "path": "sanitized_request.json",
+    "sha256": "0fe3d8bb24d08ea973b613f64efbf0f0b2c6b70c95983ddd0235311d58c08e7b"
+  }
+]

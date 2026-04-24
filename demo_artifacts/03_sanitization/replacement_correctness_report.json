@@ -1,0 +1,8 @@
+{
+  "total_detected_sensitive_entities": 9,
+  "total_replaced_entities": 9,
+  "unreplaced_entities": [],
+  "wrong_token_type": [],
+  "overlap_resolution_failures": [],
+  "token_vault_count_match": true
+}

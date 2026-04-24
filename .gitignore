@@ -1,0 +1,10 @@
+.venv/
+.local/
+.secrets/
+.env
+*.pyc
+__pycache__/
+.cache/
+.DS_Store
+.codex
+codex_privacy_expense_demo_implementation_guide_v0_4.md

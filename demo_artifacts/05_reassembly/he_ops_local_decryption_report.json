@@ -1,0 +1,16 @@
+{
+  "local_decryption_results": {
+    "HE_BOOL_1": {
+      "type": "encrypted_bool",
+      "value": false
+    },
+    "HE_CENTS_1": {
+      "type": "encrypted_cents",
+      "value": -10
+    },
+    "HE_BOOL_2": {
+      "type": "encrypted_bool",
+      "value": true
+    }
+  }
+}

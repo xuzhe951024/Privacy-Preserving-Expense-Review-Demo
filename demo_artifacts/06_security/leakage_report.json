@@ -1,0 +1,7 @@
+{
+  "sample_id": "exp_0001",
+  "cloud_request_raw_value_leakage": 0,
+  "leakage_hits": [],
+  "vault_roundtrip_accuracy": 1.0,
+  "passed": true
+}

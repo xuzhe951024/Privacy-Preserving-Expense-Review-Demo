@@ -1,0 +1,16 @@
+[
+  {
+    "op": "compare_policy_cap",
+    "left": "AMOUNT_1",
+    "right_policy_key": "taxi_cap_usd"
+  },
+  {
+    "op": "subtract",
+    "left": "AMOUNT_1",
+    "right_policy_key": "taxi_cap_usd"
+  },
+  {
+    "op": "compare_submission_window",
+    "left": "DATE_1"
+  }
+]

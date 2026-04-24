@@ -1,0 +1,27 @@
+{
+  "workflow_type": "expense_review",
+  "decision": "needs_local_policy_ops",
+  "requested_local_ops": [
+    {
+      "op": "compare_policy_cap",
+      "left": "AMOUNT_1",
+      "right_policy_key": "taxi_cap_usd"
+    },
+    {
+      "op": "subtract",
+      "left": "AMOUNT_1",
+      "right_policy_key": "taxi_cap_usd"
+    },
+    {
+      "op": "compare_submission_window",
+      "left": "DATE_1"
+    }
+  ],
+  "missing_items": [
+    "receipt"
+  ],
+  "rationale": [
+    "The cloud reasoner only saw sanitized placeholders.",
+    "Sensitive fields require local policy operations before final routing."
+  ]
+}

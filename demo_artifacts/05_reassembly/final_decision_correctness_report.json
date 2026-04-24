@@ -1,0 +1,6 @@
+{
+  "sample_id": "exp_1000",
+  "expected_final_decision": "needs_employee_followup",
+  "actual_final_decision": "needs_employee_followup",
+  "passed": true
+}

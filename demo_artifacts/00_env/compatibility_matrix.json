@@ -1,0 +1,14 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "architecture": "x86_64",
+  "python_version": "3.12.12 (main, Oct 10 2025, 08:52:57) [GCC 11.4.0]",
+  "uv_available": true,
+  "torch_installed": false,
+  "torch_cuda_available": false,
+  "recommended_mode": "cpu",
+  "notes": [
+    "The demo runs in a local virtual environment managed by uv.",
+    "CPU fallback is supported even when GPU access is blocked or torch is unavailable.",
+    "No system Python, driver, Docker, or service configuration changes were performed by this script."
+  ]
+}

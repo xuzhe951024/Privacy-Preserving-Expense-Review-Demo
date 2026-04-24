@@ -1,0 +1,34 @@
+{
+  "workflow_type": "expense_review",
+  "decision": "needs_he_ops",
+  "non_sensitive_reasoning": [
+    "The sanitized expense appears to be a taxi_rideshare.",
+    "Sensitive numeric placeholders require local HE-style policy validation."
+  ],
+  "requested_he_ops": [
+    {
+      "op_id": "op_001",
+      "op": "fhe_compare_policy_cap",
+      "ciphertext_handle": "AMOUNT_1",
+      "right_policy_key": "taxi_cap_usd",
+      "return_as": "encrypted_bool"
+    },
+    {
+      "op_id": "op_002",
+      "op": "fhe_subtract_policy_cap",
+      "ciphertext_handle": "AMOUNT_1",
+      "right_policy_key": "taxi_cap_usd",
+      "return_as": "encrypted_cents"
+    },
+    {
+      "op_id": "op_003",
+      "op": "fhe_compare_date_window",
+      "ciphertext_handle": "DATE_1",
+      "right_policy_key": "submission_window_days",
+      "return_as": "encrypted_bool"
+    }
+  ],
+  "missing_items": [
+    "receipt"
+  ]
+}

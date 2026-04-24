@@ -1,0 +1,8 @@
+{
+  "bundle_path": "cloud_session_bundle",
+  "contains_raw_text": false,
+  "contains_vault_sqlite": false,
+  "contains_vault_key": false,
+  "raw_value_hits": [],
+  "passed": true
+}

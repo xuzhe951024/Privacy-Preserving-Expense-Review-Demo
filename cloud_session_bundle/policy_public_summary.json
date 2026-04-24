@@ -1,0 +1,50 @@
+{
+  "meal_cap_usd": {
+    "scope": "local_only",
+    "description": "Meal expenses require local cap validation.",
+    "supported_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap",
+      "fhe_min_policy_cap"
+    ]
+  },
+  "hotel_cap_usd": {
+    "scope": "local_only",
+    "description": "Hotel expenses require local cap validation.",
+    "supported_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap"
+    ]
+  },
+  "airfare_cap_usd": {
+    "scope": "local_only",
+    "description": "Airfare expenses require local cap validation.",
+    "supported_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap"
+    ]
+  },
+  "taxi_cap_usd": {
+    "scope": "local_only",
+    "description": "Taxi and rideshare expenses require local cap validation.",
+    "supported_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap"
+    ]
+  },
+  "software_subscription_cap_usd": {
+    "scope": "local_only",
+    "description": "Software subscriptions require local cap validation.",
+    "supported_he_ops": [
+      "fhe_compare_policy_cap",
+      "fhe_subtract_policy_cap"
+    ]
+  },
+  "submission_window_days": {
+    "scope": "local_only",
+    "description": "Expense submission timing must be verified locally.",
+    "supported_he_ops": [
+      "fhe_compare_date_window"
+    ]
+  }
+}
