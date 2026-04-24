@@ -1,4 +1,7 @@
 Torch CUDA Check
-Installed: False
-CUDA available: False
-Detail: torch is not installed in the current environment.
+Installed: True
+CUDA available: True
+Detail: torch=2.11.0+cu128, cuda_available=True, cuda_version=12.8, device_count=1
+Resolved device: cuda
+Reason: Auto mode selected CUDA because a compatible GPU is available.
+GLiNER installed: True

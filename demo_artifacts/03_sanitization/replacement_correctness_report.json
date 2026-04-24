@@ -1,6 +1,6 @@
 {
-  "total_detected_sensitive_entities": 9,
-  "total_replaced_entities": 9,
+  "total_detected_sensitive_entities": 13,
+  "total_replaced_entities": 13,
   "unreplaced_entities": [],
   "wrong_token_type": [],
   "overlap_resolution_failures": [],

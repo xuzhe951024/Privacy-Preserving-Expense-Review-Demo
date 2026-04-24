@@ -1,23 +1,32 @@
 [
   {
     "op_id": "op_001",
-    "op": "compare_policy_cap",
-    "ciphertext_handle": "AMOUNT_1",
-    "right_policy_key": "taxi_cap_usd",
-    "interpreted_result": "within_cap"
+    "op": "sum",
+    "ciphertext_handles": [
+      "AMOUNT_1",
+      "AMOUNT_2",
+      "AMOUNT_3"
+    ],
+    "interpreted_result": 47215
   },
   {
     "op_id": "op_002",
-    "op": "subtract",
-    "ciphertext_handle": "AMOUNT_1",
-    "right_policy_key": "taxi_cap_usd",
-    "interpreted_result": -10
+    "op": "decrypt_policy_delta_and_compare_locally",
+    "ciphertext_handle": "AMOUNT_SUM_1",
+    "right_policy_key": "meal_cap_usd",
+    "interpreted_result": {
+      "delta_cents": 2215,
+      "comparison": "exceeds"
+    }
   },
   {
     "op_id": "op_003",
-    "op": "compare_submission_window",
+    "op": "decrypt_submission_window_delta_locally",
     "ciphertext_handle": "DATE_1",
     "right_policy_key": "submission_window_days",
-    "interpreted_result": true
+    "interpreted_result": {
+      "delta_days": -5,
+      "within_window": true
+    }
   }
 ]

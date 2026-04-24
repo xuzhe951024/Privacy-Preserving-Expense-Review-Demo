@@ -1,2 +1,5 @@
-device,phase,status
-GPU,all,unavailable_or_not_configured
+avg_latency_ms,device,gpu_memory_peak_mb,iterations,max_latency_ms,min_latency_ms,phase,text_length
+1361.567,CUDA,1731.763,5,6505.422,46.424,rule_plus_gliner,283
+204.602,CUDA,1731.763,5,218.123,196.814,sanitizer,283
+212.456,CUDA,1731.763,5,238.17,199.574,vault_roundtrip,283
+352.763,CUDA,1731.763,5,412.363,317.433,e2e,283

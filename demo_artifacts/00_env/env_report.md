@@ -2,12 +2,14 @@
 
 ## Summary
 
-- Recommended mode: `cpu`
+- Recommended mode: `gpu_default`
 - Architecture: `x86_64`
 - Python: `3.12.12`
 - uv available: `True`
-- torch installed: `False`
-- torch CUDA available: `False`
+- torch installed: `True`
+- torch CUDA available: `True`
+- resolved runtime device: `cuda`
+- GLiNER installed: `True`
 
 ## Command Output
 
@@ -66,8 +68,26 @@ Python 3.12.12
 ### `nvidia-smi || true`
 
 ```text
-Failed to initialize NVML: GPU access blocked by the operating system
-Failed to properly shut down NVML: GPU access blocked by the operating system
+Fri Apr 24 16:08:25 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 591.59         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:01:00.0  On |                  N/A |
+|  0%   38C    P8             13W /  575W |    2788MiB /  32607MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A             466      C   /node                                 N/A      |
++-----------------------------------------------------------------------------------------+
 ```
 
 ### `which docker || true`
@@ -86,4 +106,4 @@ Docker version 29.2.0, build 0b9d198
 
 - The demo uses an isolated project environment.
 - This preflight script is read-only and does not modify system configuration.
-- GPU remains optional. CPU fallback stays available.
+- The default runtime is GPU-first when CUDA is available. CPU fallback stays available.

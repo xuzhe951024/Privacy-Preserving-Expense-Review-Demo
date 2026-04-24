@@ -1,5 +1,5 @@
-avg_latency_ms,device,iterations,max_latency_ms,min_latency_ms,phase,text_length
-0.18,CPU,5,0.337,0.1,rule_plus_gliner,283
-102.48,CPU,5,106.019,98.6,sanitizer,283
-105.589,CPU,5,113.181,97.187,vault_roundtrip,283
-107.964,CPU,5,116.656,102.355,e2e,283
+avg_latency_ms,device,gpu_memory_peak_mb,iterations,max_latency_ms,min_latency_ms,phase,text_length
+1361.567,CUDA,1731.763,5,6505.422,46.424,rule_plus_gliner,283
+204.602,CUDA,1731.763,5,218.123,196.814,sanitizer,283
+212.456,CUDA,1731.763,5,238.17,199.574,vault_roundtrip,283
+352.763,CUDA,1731.763,5,412.363,317.433,e2e,283

@@ -3,23 +3,30 @@
   "decision": "needs_local_policy_ops",
   "requested_local_ops": [
     {
+      "op": "sum",
+      "left": [
+        "AMOUNT_1",
+        "AMOUNT_2",
+        "AMOUNT_3"
+      ],
+      "return_as": "AMOUNT_SUM_1"
+    },
+    {
       "op": "compare_policy_cap",
-      "left": "AMOUNT_1",
-      "right_policy_key": "taxi_cap_usd"
+      "left": "AMOUNT_SUM_1",
+      "right_policy_key": "meal_cap_usd"
     },
     {
       "op": "subtract",
-      "left": "AMOUNT_1",
-      "right_policy_key": "taxi_cap_usd"
+      "left": "AMOUNT_SUM_1",
+      "right_policy_key": "meal_cap_usd"
     },
     {
       "op": "compare_submission_window",
       "left": "DATE_1"
     }
   ],
-  "missing_items": [
-    "receipt"
-  ],
+  "missing_items": [],
   "rationale": [
     "The cloud reasoner only saw sanitized placeholders.",
     "Sensitive fields require local policy operations before final routing."

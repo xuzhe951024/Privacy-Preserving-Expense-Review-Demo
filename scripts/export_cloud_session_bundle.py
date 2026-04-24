@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 
 from src.cloud_bundle_exporter import export_cloud_bundle
+from src.cloud_session_handoff import prepare_isolated_cloud_session_handoff
 from src.demo_workflow import detect_sample
 from src.pipeline import load_samples_from_truth, select_sample, write_showcase_docs
 from src.sanitizer import sanitize_sample
@@ -24,6 +25,7 @@ def main() -> None:
     parser.add_argument("--sample-id", default="0")
     parser.add_argument("--threshold", type=float, default=0.3)
     parser.add_argument("--device", default="auto")
+    parser.add_argument("--prepare-handoff", action="store_true")
     args = parser.parse_args()
 
     samples = ensure_samples()
@@ -31,11 +33,15 @@ def main() -> None:
     detection = detect_sample(sample, threshold=args.threshold, device=args.device)
     vault = Vault()
     sanitized_payload = sanitize_sample(sample, detection["resolved_entities"], vault)
-    export_cloud_bundle(sanitized_payload, sample)
+    export_cloud_bundle(sanitized_payload, sample, vault=vault)
+    if args.prepare_handoff:
+        prepare_isolated_cloud_session_handoff()
     write_showcase_docs(".")
-    print(f"Exported cloud session bundle for {sample.sample_id}.")
+    if args.prepare_handoff:
+        print(f"Exported cloud session bundle and isolated handoff package for {sample.sample_id}.")
+    else:
+        print(f"Exported cloud session bundle for {sample.sample_id}.")
 
 
 if __name__ == "__main__":
     main()
-

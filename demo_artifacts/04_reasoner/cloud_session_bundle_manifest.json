@@ -1,18 +1,30 @@
 [
   {
     "path": "README.md",
-    "sha256": "44bf43473d6495f9c0ebab952446fee4137e5b97edd55729dde62f4505c38d36"
+    "sha256": "6183e371b1bdbde4bf77b1d567b3a61e062b1cae622a2bd9086571168c1e655a"
+  },
+  {
+    "path": "he_ciphertexts.json",
+    "sha256": "683e34f89e0b2d9d5de81a8df9db95de873b411d55e7fb2ac4da5a791ae5cbc7"
+  },
+  {
+    "path": "he_policy_operands.json",
+    "sha256": "04d3a5754757316f29dc52f4e959a2d508ff18958565d5aec00f77047984ea0a"
+  },
+  {
+    "path": "he_public_key.json",
+    "sha256": "b4fd54f6e85513e5519200ebec20d71ac6db1f33561fa2e009b9eec9fa309b26"
   },
   {
     "path": "placeholder_metadata.json",
-    "sha256": "c83d2aa937f18500119e4479cc6c8164f4d65ed3352c568554d696c101a22607"
+    "sha256": "ed8d784116b26be9b4f8984e7da263761899676b73a913b4514187ec135d139b"
   },
   {
     "path": "policy_public_summary.json",
-    "sha256": "a2938f17c1a9a62837db6bcdaf42b6349bef78ea8760755121fd7a1d39e5a6be"
+    "sha256": "69b4de613477d55ca4f73e27cde2a93dc78a32042bea63a6a4e43c38e99aba9a"
   },
   {
     "path": "sanitized_request.json",
-    "sha256": "0fe3d8bb24d08ea973b613f64efbf0f0b2c6b70c95983ddd0235311d58c08e7b"
+    "sha256": "d9bc09b00504bd7a82b5ed994fd0ea8a68a8429c878f0428459acfa8adb6d4fc"
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "scheme": "paillier",
+  "key_bits": 1023,
+  "session_id": "exp_0001-fdde91d6",
+  "encrypted_placeholder_count": 4,
+  "encrypted_policy_operand_count": 6,
+  "private_key_path": ".secrets/paillier_demo_key.json",
+  "bundle_files": [
+    "he_public_key.json",
+    "he_ciphertexts.json",
+    "he_policy_operands.json"
+  ],
+  "contains_plain_sensitive_values": false
+}

@@ -2,55 +2,79 @@
   {
     "token": "PERSON_1",
     "entity_type": "PERSON",
-    "source_hash_prefix": "4aea1aabadbc",
+    "source_hash_prefix": "149f7514de22",
+    "recoverable": true
+  },
+  {
+    "token": "PERSON_2",
+    "entity_type": "PERSON",
+    "source_hash_prefix": "91b2d84f6ce5",
     "recoverable": true
   },
   {
     "token": "AMOUNT_1",
     "entity_type": "AMOUNT",
-    "source_hash_prefix": "cd1d5096a886",
+    "source_hash_prefix": "1bc575f96d34",
+    "recoverable": true
+  },
+  {
+    "token": "AMOUNT_2",
+    "entity_type": "AMOUNT",
+    "source_hash_prefix": "3d3c02b1081a",
+    "recoverable": true
+  },
+  {
+    "token": "AMOUNT_3",
+    "entity_type": "AMOUNT",
+    "source_hash_prefix": "c51869094f1e",
     "recoverable": true
   },
   {
     "token": "DATE_1",
     "entity_type": "DATE",
-    "source_hash_prefix": "d67425239ed6",
+    "source_hash_prefix": "dc791cac3a41",
     "recoverable": true
   },
   {
     "token": "VENDOR_1",
     "entity_type": "VENDOR",
-    "source_hash_prefix": "599e563967b6",
-    "recoverable": true
-  },
-  {
-    "token": "EMPLOYEE_ID_1",
-    "entity_type": "EMPLOYEE_ID",
-    "source_hash_prefix": "e81c3b75016b",
+    "source_hash_prefix": "f98ed7914c58",
     "recoverable": true
   },
   {
     "token": "INVOICE_ID_1",
     "entity_type": "INVOICE_ID",
-    "source_hash_prefix": "991cf7b84c63",
+    "source_hash_prefix": "130b97676dce",
     "recoverable": true
   },
   {
-    "token": "CARD_LAST4_1",
-    "entity_type": "CARD_LAST4",
-    "source_hash_prefix": "22e0da1c88c1",
+    "token": "PROJECT_CODE_1",
+    "entity_type": "PROJECT_CODE",
+    "source_hash_prefix": "b95f8333b4d5",
+    "recoverable": true
+  },
+  {
+    "token": "COST_CENTER_1",
+    "entity_type": "COST_CENTER",
+    "source_hash_prefix": "f231716fc673",
+    "recoverable": true
+  },
+  {
+    "token": "EMPLOYEE_ID_1",
+    "entity_type": "EMPLOYEE_ID",
+    "source_hash_prefix": "c47ba68b4674",
     "recoverable": true
   },
   {
     "token": "EMAIL_1",
     "entity_type": "EMAIL",
-    "source_hash_prefix": "a5c99200ad21",
+    "source_hash_prefix": "8f855754fbde",
     "recoverable": true
   },
   {
     "token": "PHONE_NUMBER_1",
     "entity_type": "PHONE_NUMBER",
-    "source_hash_prefix": "cafc690c34bb",
+    "source_hash_prefix": "e1b187c72a2a",
     "recoverable": true
   }
 ]

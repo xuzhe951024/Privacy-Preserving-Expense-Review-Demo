@@ -20,6 +20,11 @@ PATTERN_SPECS = [
     ("DATE", re.compile(r"\b20\d{2}-\d{2}-\d{2}\b")),
 ]
 
+VENDOR_CONTEXT_PATTERNS = [
+    re.compile(r"\bVendor (?P<value>[A-Z][A-Za-z0-9&'-]*(?:\s+[A-Z0-9][A-Za-z0-9&'-]*){0,4})(?=\s+charged\b)"),
+    re.compile(r"\bat vendor (?P<value>[A-Z][A-Za-z0-9&'-]*(?:\s+[A-Z0-9][A-Za-z0-9&'-]*){0,4})(?=[,.;]|\s+for\b|\s+with\b|$)"),
+]
+
 
 def normalize_value(label: str, value: str) -> str:
     if label == "AMOUNT":
@@ -48,6 +53,26 @@ def detect_rule_entities(text: str) -> list[DetectedEntity]:
                     source="rule",
                     normalized_value=normalize_value(label, value),
                     expected_action=policy.get("action", "tokenize_encrypt"),
+                )
+            )
+    vendor_policy = get_entity_policy("VENDOR")
+    for pattern_index, pattern in enumerate(VENDOR_CONTEXT_PATTERNS, start=1):
+        for match_index, match in enumerate(pattern.finditer(text), start=1):
+            value = match.group("value")
+            start = match.start("value")
+            end = match.end("value")
+            entities.append(
+                DetectedEntity(
+                    entity_id=f"rule_vendor_{pattern_index}_{match_index}",
+                    label="VENDOR",
+                    text=value,
+                    start=start,
+                    end=end,
+                    score=0.97,
+                    source="rule",
+                    normalized_value=value,
+                    sensitivity_level="medium",
+                    expected_action=vendor_policy.get("action", "tokenize_encrypt"),
                 )
             )
     return sorted(entities, key=lambda item: (item.start, item.end, item.label))

@@ -4,7 +4,7 @@
 
 ```json
 {
-  "sanitized_text": "Employee <PERSON_1> submitted a team offsite meal summary: meal <AMOUNT_1>, tip <AMOUNT_2>, tax <AMOUNT_3> on <DATE_1> at <VENDOR_1>. Invoice <INVOICE_ID_1>, project <PROJECT_CODE_1>, cost center <COST_CENTER_1>, employee ID <EMPLOYEE_ID_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>.",
+  "sanitized_text": "Employee <PERSON_1> <PERSON_2> submitted a team offsite meal summary: meal <AMOUNT_1>, tip <AMOUNT_2>, tax <AMOUNT_3> on <DATE_1> at vendor <VENDOR_1>. Invoice <INVOICE_ID_1>, project <PROJECT_CODE_1>, cost center <COST_CENTER_1>, employee ID <EMPLOYEE_ID_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>.",
   "public_context": {
     "workflow_type": "expense_review",
     "expense_type": "team_offsite",
@@ -17,6 +17,7 @@
   },
   "metadata_keys": [
     "PERSON_1",
+    "PERSON_2",
     "AMOUNT_1",
     "AMOUNT_2",
     "AMOUNT_3",
@@ -37,7 +38,7 @@
 ```json
 {
   "sample_id": "exp_0001",
-  "sanitized_text": "Employee <PERSON_1> submitted a team offsite meal summary: meal <AMOUNT_1>, tip <AMOUNT_2>, tax <AMOUNT_3> on <DATE_1> at <VENDOR_1>. Invoice <INVOICE_ID_1>, project <PROJECT_CODE_1>, cost center <COST_CENTER_1>, employee ID <EMPLOYEE_ID_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>.",
+  "sanitized_text": "Employee <PERSON_1> <PERSON_2> submitted a team offsite meal summary: meal <AMOUNT_1>, tip <AMOUNT_2>, tax <AMOUNT_3> on <DATE_1> at vendor <VENDOR_1>. Invoice <INVOICE_ID_1>, project <PROJECT_CODE_1>, cost center <COST_CENTER_1>, employee ID <EMPLOYEE_ID_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>.",
   "public_context": {
     "expense_type": "team_offsite",
     "policy_key": "meal_cap_usd",
@@ -45,6 +46,9 @@
   },
   "metadata": {
     "PERSON_1": {
+      "entity_type": "PERSON"
+    },
+    "PERSON_2": {
       "entity_type": "PERSON"
     },
     "AMOUNT_1": {

@@ -1,0 +1,15 @@
+{
+  "handoff_dir": "cloud_session_handoff",
+  "top_level_entries": [
+    "OPEN_IN_SECOND_SESSION.md",
+    "README.md",
+    "cloud_session_bundle",
+    "handoff_manifest.json",
+    "session_output",
+    "skills",
+    "tools"
+  ],
+  "disallowed_entries": [],
+  "manifest_entries": 15,
+  "passed": true
+}

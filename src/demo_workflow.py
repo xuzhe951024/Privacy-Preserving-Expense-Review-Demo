@@ -10,7 +10,7 @@ from src.cloud_reasoner_client import run_cloud_skill_mock
 from src.detector_gliner import detect_gliner_entities, detector_status_report
 from src.detector_rules import detect_rule_entities
 from src.entity_resolver import resolve_entities
-from src.he_service_mock import execute_he_plan
+from src.he_service import DEFAULT_HE_KEY_PATH, execute_he_plan
 from src.models import ExpenseSample
 from src.reassembler import reassemble_results
 from src.sanitizer import sanitize_sample
@@ -71,6 +71,8 @@ def run_demo_flow(
         sample,
         bundle_dir=project_root / bundle_dir,
         artifact_dir=project_root / "demo_artifacts" / "04_reasoner",
+        vault=local_vault,
+        he_key_path=project_root / DEFAULT_HE_KEY_PATH,
     )
     audit_logger.record(
         "request",
@@ -105,11 +107,13 @@ def run_demo_flow(
         local_vault,
         artifact_dir=project_root / "demo_artifacts" / "05_reassembly",
         result_store_dir=project_root / ".local" / "he_results",
+        bundle_dir=project_root / bundle_dir,
+        key_path=project_root / DEFAULT_HE_KEY_PATH,
         submission_reference_epoch_days=(date(2026, 4, 30) - date(1970, 1, 1)).days,
     )
     audit_logger.record(
         "local_ops",
-        "he_mock_complete",
+        "paillier_he_complete",
         sample_id=sample.sample_id,
         session_id=sanitized_payload.session_id,
         he_result_count=len(he_results["he_results"]),

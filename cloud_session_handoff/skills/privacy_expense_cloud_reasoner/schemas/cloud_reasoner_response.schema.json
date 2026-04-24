@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cloud Reasoner Response",
+  "type": "object",
+  "required": [
+    "workflow_type",
+    "decision",
+    "requested_local_ops",
+    "missing_items",
+    "rationale"
+  ],
+  "properties": {
+    "workflow_type": {
+      "type": "string",
+      "const": "expense_review"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "needs_local_policy_ops",
+        "needs_human_review"
+      ]
+    },
+    "requested_local_ops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "op"
+        ],
+        "properties": {
+          "op": {
+            "type": "string"
+          },
+          "left": {
+            "type": [
+              "string",
+              "array"
+            ]
+          },
+          "right_policy_key": {
+            "type": "string"
+          },
+          "return_as": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "missing_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rationale": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

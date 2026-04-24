@@ -1,5 +1,5 @@
 {
-  "schema": "/home/zhexu/privacy-preserving-demo/skills/privacy_expense_cloud_reasoner/schemas/he_call_plan.schema.json",
+  "schema": "skills/privacy_expense_cloud_reasoner/schemas/he_call_plan.schema.json",
   "valid": true,
   "errors": []
 }

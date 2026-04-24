@@ -3,19 +3,31 @@
     {
       "sample_id": "exp_0001",
       "truth_count": 12,
-      "prediction_count": 12,
+      "prediction_count": 13,
       "exact_match_count": 11,
       "relaxed_match_count": 12,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Ava Thompson",
+          "text": "Ava",
           "start": 9,
+          "end": 12,
+          "entity_id": "gliner_person_1",
+          "score": 0.9965745210647583,
+          "source": "gliner_native",
+          "normalized_value": "Ava",
+          "sensitivity_level": "high",
+          "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "PERSON",
+          "text": "Thompson",
+          "start": 13,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Ava Thompson",
+          "entity_id": "gliner_person_2",
+          "score": 0.4613966941833496,
+          "source": "gliner_native",
+          "normalized_value": "Thompson",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -69,13 +81,13 @@
         },
         {
           "label": "VENDOR",
-          "text": "vendor North Point Kitchen",
-          "start": 115,
+          "text": "North Point Kitchen",
+          "start": 122,
           "end": 141,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
-          "normalized_value": "vendor North Point Kitchen",
+          "entity_id": "rule_vendor_2_1",
+          "score": 0.97,
+          "source": "rule",
+          "normalized_value": "North Point Kitchen",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
         },
@@ -157,18 +169,18 @@
       "sample_id": "exp_0002",
       "truth_count": 8,
       "prediction_count": 8,
-      "exact_match_count": 8,
+      "exact_match_count": 7,
       "relaxed_match_count": 8,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.9981725215911865,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -201,9 +213,9 @@
           "text": "Harbor Grill",
           "start": 52,
           "end": 64,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9987934827804565,
+          "source": "gliner_native",
           "normalized_value": "Harbor Grill",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -261,7 +273,7 @@
     {
       "sample_id": "exp_0003",
       "truth_count": 11,
-      "prediction_count": 11,
+      "prediction_count": 12,
       "exact_match_count": 11,
       "relaxed_match_count": 11,
       "predictions": [
@@ -270,9 +282,9 @@
           "text": "Sarah Brooks",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9648452997207642,
+          "source": "gliner_native",
           "normalized_value": "Sarah Brooks",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -306,9 +318,9 @@
           "text": "Harbor Grill",
           "start": 98,
           "end": 110,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "rule_vendor_1_1",
+          "score": 0.97,
+          "source": "rule",
           "normalized_value": "Harbor Grill",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -336,6 +348,18 @@
           "normalized_value": "4802",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Beacon Capital",
+          "start": 184,
+          "end": 198,
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9991039633750916,
+          "source": "gliner_native",
+          "normalized_value": "Beacon Capital",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -402,7 +426,7 @@
     {
       "sample_id": "exp_0004",
       "truth_count": 11,
-      "prediction_count": 11,
+      "prediction_count": 12,
       "exact_match_count": 11,
       "relaxed_match_count": 11,
       "predictions": [
@@ -411,9 +435,9 @@
           "text": "John Miller",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9979541301727295,
+          "source": "gliner_native",
           "normalized_value": "John Miller",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -447,9 +471,9 @@
           "text": "North Point Kitchen",
           "start": 97,
           "end": 116,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "rule_vendor_1_1",
+          "score": 0.97,
+          "source": "rule",
           "normalized_value": "North Point Kitchen",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -477,6 +501,18 @@
           "normalized_value": "4803",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Solstice Labs",
+          "start": 190,
+          "end": 203,
+          "entity_id": "gliner_vendor_3",
+          "score": 0.9980459213256836,
+          "source": "gliner_native",
+          "normalized_value": "Solstice Labs",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -552,9 +588,9 @@
           "text": "John Miller",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9977353811264038,
+          "source": "gliner_native",
           "normalized_value": "John Miller",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -564,9 +600,9 @@
           "text": "Motel 6 Downtown",
           "start": 34,
           "end": 50,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9978405237197876,
+          "source": "gliner_native",
           "normalized_value": "Motel 6 Downtown",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -684,7 +720,7 @@
     {
       "sample_id": "exp_0006",
       "truth_count": 12,
-      "prediction_count": 12,
+      "prediction_count": 13,
       "exact_match_count": 11,
       "relaxed_match_count": 11,
       "predictions": [
@@ -693,9 +729,9 @@
           "text": "Elena Garcia",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9967495203018188,
+          "source": "gliner_native",
           "normalized_value": "Elena Garcia",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -729,9 +765,9 @@
           "text": "Slate & Fork",
           "start": 98,
           "end": 110,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9939540028572083,
+          "source": "gliner_native",
           "normalized_value": "Slate & Fork",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -759,6 +795,18 @@
           "normalized_value": "4805",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Acme Retail",
+          "start": 184,
+          "end": 195,
+          "entity_id": "gliner_vendor_3",
+          "score": 0.8420602679252625,
+          "source": "gliner_native",
+          "normalized_value": "Acme Retail",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -870,9 +918,9 @@
           "text": "Ava Thompson",
           "start": 73,
           "end": 85,
-          "entity_id": "heuristic_person_1",
-          "score": 0.62,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_2",
+          "score": 0.9989226460456848,
+          "source": "gliner_native",
           "normalized_value": "Ava Thompson",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -939,9 +987,9 @@
           "text": "Daniel Chen",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9989449381828308,
+          "source": "gliner_native",
           "normalized_value": "Daniel Chen",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -1008,9 +1056,9 @@
           "text": "John Miller",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9988024234771729,
+          "source": "gliner_native",
           "normalized_value": "John Miller",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -1020,9 +1068,9 @@
           "text": "Figma",
           "start": 78,
           "end": 83,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9920758008956909,
+          "source": "gliner_native",
           "normalized_value": "Figma",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1137,9 +1185,9 @@
           "text": "Elena Garcia",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9895153045654297,
+          "source": "gliner_native",
           "normalized_value": "Elena Garcia",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -1149,9 +1197,9 @@
           "text": "Hilton Garden Inn",
           "start": 35,
           "end": 52,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9816547632217407,
+          "source": "gliner_native",
           "normalized_value": "Hilton Garden Inn",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1270,7 +1318,7 @@
       "sample_id": "exp_0011",
       "truth_count": 4,
       "prediction_count": 4,
-      "exact_match_count": 4,
+      "exact_match_count": 3,
       "relaxed_match_count": 4,
       "predictions": [
         {
@@ -1287,13 +1335,13 @@
         },
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 54,
-          "end": 64,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 59,
+          "entity_id": "gliner_person_2",
+          "score": 0.9942886829376221,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -1327,18 +1375,18 @@
       "sample_id": "exp_0012",
       "truth_count": 9,
       "prediction_count": 9,
-      "exact_match_count": 9,
+      "exact_match_count": 8,
       "relaxed_match_count": 9,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.9945688247680664,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -1371,9 +1419,9 @@
           "text": "Metro Black Car",
           "start": 78,
           "end": 93,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9976664781570435,
+          "source": "gliner_native",
           "normalized_value": "Metro Black Car",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1444,7 +1492,7 @@
       "sample_id": "exp_0013",
       "truth_count": 12,
       "prediction_count": 12,
-      "exact_match_count": 11,
+      "exact_match_count": 12,
       "relaxed_match_count": 12,
       "predictions": [
         {
@@ -1452,9 +1500,9 @@
           "text": "Daniel Chen",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9992868304252625,
+          "source": "gliner_native",
           "normalized_value": "Daniel Chen",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -1509,13 +1557,13 @@
         },
         {
           "label": "VENDOR",
-          "text": "vendor Slate & Fork",
-          "start": 114,
+          "text": "Slate & Fork",
+          "start": 121,
           "end": 133,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
-          "normalized_value": "vendor Slate & Fork",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9961918592453003,
+          "source": "gliner_native",
+          "normalized_value": "Slate & Fork",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
         },
@@ -1597,18 +1645,18 @@
       "sample_id": "exp_0014",
       "truth_count": 10,
       "prediction_count": 10,
-      "exact_match_count": 10,
+      "exact_match_count": 9,
       "relaxed_match_count": 10,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.9982420206069946,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -1617,9 +1665,9 @@
           "text": "Slack",
           "start": 77,
           "end": 82,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9953004121780396,
+          "source": "gliner_native",
           "normalized_value": "Slack",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1726,18 +1774,18 @@
       "sample_id": "exp_0015",
       "truth_count": 11,
       "prediction_count": 12,
-      "exact_match_count": 11,
+      "exact_match_count": 10,
       "relaxed_match_count": 11,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.987705647945404,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -1770,9 +1818,9 @@
           "text": "Oakline Bistro",
           "start": 96,
           "end": 110,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "rule_vendor_1_1",
+          "score": 0.97,
+          "source": "rule",
           "normalized_value": "Oakline Bistro",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1800,6 +1848,18 @@
           "normalized_value": "4814",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Northwind Energy",
+          "start": 184,
+          "end": 200,
+          "entity_id": "gliner_vendor_3",
+          "score": 0.9969446063041687,
+          "source": "gliner_native",
+          "normalized_value": "Northwind Energy",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -1860,18 +1920,6 @@
           "normalized_value": "13125550191",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
-        },
-        {
-          "label": "VENDOR",
-          "text": "and invoice ID",
-          "start": 394,
-          "end": 408,
-          "entity_id": "heuristic_vendor_3",
-          "score": 0.56,
-          "source": "gliner_heuristic",
-          "normalized_value": "and invoice ID",
-          "sensitivity_level": "medium",
-          "expected_action": "tokenize_or_category"
         }
       ]
     },
@@ -1879,18 +1927,18 @@
       "sample_id": "exp_0016",
       "truth_count": 9,
       "prediction_count": 9,
-      "exact_match_count": 9,
+      "exact_match_count": 8,
       "relaxed_match_count": 9,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.9857612252235413,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -1923,9 +1971,9 @@
           "text": "Lyft Corporate",
           "start": 78,
           "end": 92,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9956707954406738,
+          "source": "gliner_native",
           "normalized_value": "Lyft Corporate",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -1995,7 +2043,7 @@
     {
       "sample_id": "exp_0017",
       "truth_count": 11,
-      "prediction_count": 11,
+      "prediction_count": 12,
       "exact_match_count": 11,
       "relaxed_match_count": 11,
       "predictions": [
@@ -2004,9 +2052,9 @@
           "text": "Daniel Chen",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9995848536491394,
+          "source": "gliner_native",
           "normalized_value": "Daniel Chen",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2040,9 +2088,9 @@
           "text": "Harbor Grill",
           "start": 97,
           "end": 109,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "rule_vendor_1_1",
+          "score": 0.97,
+          "source": "rule",
           "normalized_value": "Harbor Grill",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2070,6 +2118,18 @@
           "normalized_value": "4816",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Beacon Capital",
+          "start": 183,
+          "end": 197,
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9989965558052063,
+          "source": "gliner_native",
+          "normalized_value": "Beacon Capital",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -2137,18 +2197,18 @@
       "sample_id": "exp_0018",
       "truth_count": 11,
       "prediction_count": 11,
-      "exact_match_count": 11,
+      "exact_match_count": 10,
       "relaxed_match_count": 11,
       "predictions": [
         {
           "label": "PERSON",
-          "text": "Priya Shah",
+          "text": "Priya",
           "start": 9,
-          "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
-          "normalized_value": "Priya Shah",
+          "end": 14,
+          "entity_id": "gliner_person_1",
+          "score": 0.9967235922813416,
+          "source": "gliner_native",
+          "normalized_value": "Priya",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
         },
@@ -2157,9 +2217,9 @@
           "text": "Embassy Suites Midtown",
           "start": 33,
           "end": 55,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9980394244194031,
+          "source": "gliner_native",
           "normalized_value": "Embassy Suites Midtown",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2286,9 +2346,9 @@
           "text": "Elena Garcia",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9991613626480103,
+          "source": "gliner_native",
           "normalized_value": "Elena Garcia",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2310,9 +2370,9 @@
           "text": "JetBlue",
           "start": 60,
           "end": 67,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9941001534461975,
+          "source": "gliner_native",
           "normalized_value": "JetBlue",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2415,9 +2475,9 @@
           "text": "Sarah Brooks",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9363583922386169,
+          "source": "gliner_native",
           "normalized_value": "Sarah Brooks",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2451,9 +2511,9 @@
           "text": "Lyft Corporate",
           "start": 80,
           "end": 94,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9956157207489014,
+          "source": "gliner_native",
           "normalized_value": "Lyft Corporate",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2524,7 +2584,7 @@
       "sample_id": "exp_0021",
       "truth_count": 12,
       "prediction_count": 12,
-      "exact_match_count": 11,
+      "exact_match_count": 12,
       "relaxed_match_count": 12,
       "predictions": [
         {
@@ -2532,9 +2592,9 @@
           "text": "Noah Patel",
           "start": 9,
           "end": 19,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9968204498291016,
+          "source": "gliner_native",
           "normalized_value": "Noah Patel",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2589,13 +2649,13 @@
         },
         {
           "label": "VENDOR",
-          "text": "vendor Harbor Grill",
-          "start": 113,
+          "text": "Harbor Grill",
+          "start": 120,
           "end": 132,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
-          "normalized_value": "vendor Harbor Grill",
+          "entity_id": "rule_vendor_2_1",
+          "score": 0.97,
+          "source": "rule",
+          "normalized_value": "Harbor Grill",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
         },
@@ -2685,9 +2745,9 @@
           "text": "Marcus Reed",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9940172433853149,
+          "source": "gliner_native",
           "normalized_value": "Marcus Reed",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2697,9 +2757,9 @@
           "text": "Atlassian",
           "start": 78,
           "end": 87,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9998313188552856,
+          "source": "gliner_native",
           "normalized_value": "Atlassian",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2814,9 +2874,9 @@
           "text": "Sarah Brooks",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9128745794296265,
+          "source": "gliner_native",
           "normalized_value": "Sarah Brooks",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -2850,9 +2910,9 @@
           "text": "Harbor Grill",
           "start": 98,
           "end": 110,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "rule_vendor_1_1",
+          "score": 0.97,
+          "source": "rule",
           "normalized_value": "Harbor Grill",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -2880,6 +2940,18 @@
           "normalized_value": "4822",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Acme Retail",
+          "start": 184,
+          "end": 195,
+          "entity_id": "gliner_vendor_3",
+          "score": 0.9801974296569824,
+          "source": "gliner_native",
+          "normalized_value": "Acme Retail",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -2940,18 +3012,6 @@
           "normalized_value": "17185550152",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
-        },
-        {
-          "label": "VENDOR",
-          "text": "and invoice ID",
-          "start": 392,
-          "end": 406,
-          "entity_id": "heuristic_vendor_3",
-          "score": 0.56,
-          "source": "gliner_heuristic",
-          "normalized_value": "and invoice ID",
-          "sensitivity_level": "medium",
-          "expected_action": "tokenize_or_category"
         }
       ]
     },
@@ -2967,9 +3027,9 @@
           "text": "Elena Garcia",
           "start": 9,
           "end": 21,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9924138188362122,
+          "source": "gliner_native",
           "normalized_value": "Elena Garcia",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -3003,9 +3063,9 @@
           "text": "Metro Black Car",
           "start": 80,
           "end": 95,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9980118274688721,
+          "source": "gliner_native",
           "normalized_value": "Metro Black Car",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -3075,7 +3135,7 @@
     {
       "sample_id": "exp_0025",
       "truth_count": 11,
-      "prediction_count": 11,
+      "prediction_count": 12,
       "exact_match_count": 11,
       "relaxed_match_count": 11,
       "predictions": [
@@ -3084,9 +3144,9 @@
           "text": "Marcus Reed",
           "start": 9,
           "end": 20,
-          "entity_id": "heuristic_person_1",
-          "score": 0.64,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_person_1",
+          "score": 0.9396287202835083,
+          "source": "gliner_native",
           "normalized_value": "Marcus Reed",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
@@ -3120,9 +3180,9 @@
           "text": "Slate & Fork",
           "start": 97,
           "end": 109,
-          "entity_id": "heuristic_vendor_1",
-          "score": 0.56,
-          "source": "gliner_heuristic",
+          "entity_id": "gliner_vendor_2",
+          "score": 0.9467813968658447,
+          "source": "gliner_native",
           "normalized_value": "Slate & Fork",
           "sensitivity_level": "medium",
           "expected_action": "tokenize_or_category"
@@ -3150,6 +3210,18 @@
           "normalized_value": "4824",
           "sensitivity_level": "high",
           "expected_action": "tokenize_encrypt"
+        },
+        {
+          "label": "VENDOR",
+          "text": "Beacon Capital",
+          "start": 183,
+          "end": 197,
+          "entity_id": "gliner_vendor_3",
+          "score": 0.9968000650405884,
+          "source": "gliner_native",
+          "normalized_value": "Beacon Capital",
+          "sensitivity_level": "medium",
+          "expected_action": "tokenize_or_category"
         },
         {
           "label": "PROJECT_CODE",
@@ -3217,153 +3289,153 @@
   "gliner_status": [
     {
       "sample_id": "exp_0001",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 5
     },
     {
       "sample_id": "exp_0002",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0003",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 3
-    },
-    {
-      "sample_id": "exp_0004",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 3
-    },
-    {
-      "sample_id": "exp_0005",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0006",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 3
-    },
-    {
-      "sample_id": "exp_0007",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 1
-    },
-    {
-      "sample_id": "exp_0008",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 1
-    },
-    {
-      "sample_id": "exp_0009",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0010",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0011",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 1
-    },
-    {
-      "sample_id": "exp_0012",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0013",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0014",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0015",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
       "entity_count": 4
     },
     {
-      "sample_id": "exp_0016",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
+      "sample_id": "exp_0003",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0004",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0005",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0006",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 6
+    },
+    {
+      "sample_id": "exp_0007",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
       "entity_count": 2
     },
     {
+      "sample_id": "exp_0008",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0009",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0010",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0011",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 2
+    },
+    {
+      "sample_id": "exp_0012",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0013",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0014",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0015",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 5
+    },
+    {
+      "sample_id": "exp_0016",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
       "sample_id": "exp_0017",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
       "entity_count": 3
     },
     {
       "sample_id": "exp_0018",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0019",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0020",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0021",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0022",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
-    },
-    {
-      "sample_id": "exp_0023",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
       "entity_count": 4
     },
     {
+      "sample_id": "exp_0019",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0020",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
+    },
+    {
+      "sample_id": "exp_0021",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0022",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 3
+    },
+    {
+      "sample_id": "exp_0023",
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 5
+    },
+    {
       "sample_id": "exp_0024",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 2
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 4
     },
     {
       "sample_id": "exp_0025",
-      "model_status": "degraded",
-      "detail": "GLiNER import unavailable: No module named 'gliner'; heuristic fallback active",
-      "entity_count": 3
+      "model_status": "native_gpu",
+      "detail": "GLiNER native inference on requested_device=auto, resolved_device=cuda. Auto mode selected CUDA because a compatible GPU is available. GPU=NVIDIA GeForce RTX 5090",
+      "entity_count": 5
     }
   ]
 }

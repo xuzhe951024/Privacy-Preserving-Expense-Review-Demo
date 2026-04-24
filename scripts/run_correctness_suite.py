@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 from statistics import mean
 
 from src.demo_workflow import detect_sample, run_demo_flow
@@ -17,12 +18,20 @@ def entity_metric_line(metric_row: dict[str, object]) -> str:
     )
 
 
+def _progress(label: str, index: int, total: int, progress_every: int) -> None:
+    if progress_every <= 0:
+        return
+    if index == total or index % progress_every == 0:
+        print(f"{label}: {index}/{total}", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the demo correctness suite.")
     parser.add_argument("--n", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--threshold", type=float, default=0.3)
     parser.add_argument("--device", default="auto")
+    parser.add_argument("--progress-every", type=int, default=0)
     args = parser.parse_args()
 
     samples = generate_samples(args.n, args.seed)
@@ -30,9 +39,10 @@ def main() -> None:
 
     truth_records = [sample.truth_record() for sample in samples]
     prediction_records = []
-    for sample in samples:
+    for index, sample in enumerate(samples, start=1):
         detection = detect_sample(sample, threshold=args.threshold, device=args.device)
         prediction_records.append({"sample_id": sample.sample_id, "predictions": [entity.to_dict() for entity in detection["resolved_entities"]]})
+        _progress("Correctness detection pass", index, len(samples), args.progress_every)
     detection_summary = summarize_detection(truth_records, prediction_records)
 
     replacement_passes = 0
@@ -41,8 +51,14 @@ def main() -> None:
     leakage_count = 0
     audit_complete = 0
     failures = []
-    for sample in load_samples_from_truth("data/synthetic_ground_truth.jsonl"):
-        result = run_demo_flow(sample, threshold=args.threshold, device=args.device)
+    validation_samples = load_samples_from_truth("data/synthetic_ground_truth.jsonl")
+    for index, sample in enumerate(validation_samples, start=1):
+        result = run_demo_flow(
+            sample,
+            threshold=args.threshold,
+            device=args.device,
+            artifact_root=Path(".local/correctness_artifacts") / sample.sample_id,
+        )
         replacement_ok = result["sanitized_payload"].replacement_report["token_vault_count_match"] and result["sanitized_payload"].leakage_check["passed"]
         policy_ok = bool(result["reassembly"]["policy_ops_correctness"]["passed"])
         final_ok = bool(result["reassembly"]["final_decision_correctness"]["passed"])
@@ -68,6 +84,7 @@ def main() -> None:
                     "actual_final_decision": result["reassembly"]["actual_final_decision"],
                 }
             )
+        _progress("Correctness end-to-end pass", index, len(validation_samples), args.progress_every)
 
     total = len(samples)
     replacement_accuracy = round(replacement_passes / total, 4)
@@ -123,8 +140,8 @@ def main() -> None:
                 "",
                 "## Current Boundaries",
                 "",
-                "- The default detector uses rules plus a GLiNER-compatible fallback heuristic unless the GLiNER model is available.",
-                "- Real TFHE-rs execution is intentionally out of scope for the default path.",
+                "- The default detector uses rules plus native GLiNER when available; the heuristic detector is used only as a fallback.",
+                "- The default HE path uses Paillier additive homomorphic encryption for encrypted policy deltas.",
                 "- Ambiguous malformed values are routed to human review rather than guessed.",
             ]
         ),
@@ -135,4 +152,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

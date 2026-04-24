@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from src.audit import AuditLogger
-from src.he_service_mock import execute_he_plan
+from src.he_service import execute_he_plan
 from src.models import SanitizedPayload
 from src.pipeline import load_samples_from_truth, select_sample
 from src.reassembler import reassemble_results
@@ -27,7 +27,7 @@ def load_json(path: str | Path) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Execute HE mock ops and local reassembly.")
+    parser = argparse.ArgumentParser(description="Execute real Paillier HE ops and local reassembly.")
     parser.add_argument("--sample-id", default="0")
     args = parser.parse_args()
 
@@ -51,6 +51,9 @@ def main() -> None:
         token_preview=[],
     )
     he_plan = load_json(he_plan_path)
+    he_evaluation_path = Path("demo_artifacts/04_reasoner/cloud_he_evaluation.json")
+    if he_evaluation_path.exists():
+        he_plan["he_evaluation"] = load_json(he_evaluation_path)
     vault = Vault()
     audit_logger = AuditLogger()
     audit_logger.record("local_ops", "he_plan_reused", sample_id=sample.sample_id, session_id=sanitized_payload.session_id)
@@ -60,6 +63,7 @@ def main() -> None:
         vault,
         artifact_dir="demo_artifacts/05_reassembly",
         result_store_dir=".local/he_results",
+        bundle_dir="cloud_session_bundle",
     )
     reassembly = reassemble_results(
         sample,
@@ -70,9 +74,8 @@ def main() -> None:
         artifact_dir="demo_artifacts/05_reassembly",
         result_store_dir=".local/he_results",
     )
-    print(f"HE demo finished. Final decision: {reassembly['actual_final_decision']}")
+    print(f"Paillier HE demo finished. Final decision: {reassembly['actual_final_decision']}")
 
 
 if __name__ == "__main__":
     main()
-

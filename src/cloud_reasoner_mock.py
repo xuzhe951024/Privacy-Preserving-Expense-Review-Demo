@@ -99,16 +99,6 @@ def build_cloud_skill_response(sanitized_request: dict[str, Any]) -> dict[str, A
         requested_he_ops.append(
             {
                 "op_id": f"op_{next_id:03d}",
-                "op": "fhe_compare_policy_cap",
-                "ciphertext_handle": comparison_handle,
-                "right_policy_key": context["policy_key"],
-                "return_as": "encrypted_bool",
-            }
-        )
-        next_id += 1
-        requested_he_ops.append(
-            {
-                "op_id": f"op_{next_id:03d}",
                 "op": "fhe_subtract_policy_cap",
                 "ciphertext_handle": comparison_handle,
                 "right_policy_key": context["policy_key"],
@@ -123,7 +113,7 @@ def build_cloud_skill_response(sanitized_request: dict[str, Any]) -> dict[str, A
                 "op": "fhe_compare_date_window",
                 "ciphertext_handle": _date_handles(metadata)[0],
                 "right_policy_key": "submission_window_days",
-                "return_as": "encrypted_bool",
+                "return_as": "encrypted_days_delta",
             }
         )
 
@@ -137,7 +127,7 @@ def build_cloud_skill_response(sanitized_request: dict[str, Any]) -> dict[str, A
         "decision": decision,
         "non_sensitive_reasoning": [
             f"The sanitized expense appears to be a {context.get('expense_type', 'review request')}.",
-            "Sensitive numeric placeholders require local HE-style policy validation.",
+            "Sensitive numeric placeholders require Paillier encrypted policy validation.",
         ],
         "requested_he_ops": requested_he_ops,
         "missing_items": ["receipt"] if not context.get("receipt_attached", True) else [],
@@ -185,7 +175,7 @@ def validate_authorized_he_ops(plan: dict[str, Any], metadata: dict[str, dict[st
         if allowed and operation.get("result_handle"):
             result_handle = operation["result_handle"]
             if op_name == "fhe_sum_amounts":
-                derived_handles[result_handle] = {"fhe_compare_policy_cap", "fhe_subtract_policy_cap", "fhe_min_policy_cap"}
+                derived_handles[result_handle] = {"fhe_subtract_policy_cap"}
             else:
                 derived_handles[result_handle] = inherited_permissions or {op_name}
 
@@ -205,12 +195,23 @@ def write_reasoner_artifacts(
 ) -> dict[str, Any]:
     artifact_root = Path(artifact_dir)
     authorization_report = validate_authorized_he_ops(cloud_response, sanitized_request["metadata"])
+    provenance = {
+        "session_label": "mock_cloud_session",
+        "execution_mode": "repository_internal_mock",
+        "producer": "src.cloud_reasoner_mock.build_cloud_skill_response",
+        "separate_codex_session": False,
+        "interpretation_note": (
+            "This artifact was produced by the repository-internal mock reasoner. "
+            "Use it as a baseline or control path, not as output from a separately executed Codex session."
+        ),
+    }
     write_json(artifact_root / "cloud_request_mock.json", sanitized_request)
     write_json(artifact_root / "reasoner_response_mock.json", local_response)
     write_json(artifact_root / "requested_local_ops.json", local_response.get("requested_local_ops", []))
     write_json(artifact_root / "cloud_skill_input.json", sanitized_request)
     write_json(artifact_root / "cloud_skill_output.json", cloud_response)
     write_json(artifact_root / "he_call_plan.json", cloud_response)
+    write_json(artifact_root / "mock_session_provenance.json", provenance)
     write_json(artifact_root / "unauthorized_ops_report.json", authorization_report)
     write_json(artifact_root / "he_call_authorization_report.json", authorization_report)
     return authorization_report

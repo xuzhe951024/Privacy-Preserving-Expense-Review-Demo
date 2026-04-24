@@ -1,55 +1,10 @@
 from __future__ import annotations
 
 import json
-import subprocess
-import sys
-from pathlib import Path
 
 import streamlit as st
 
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-
-def run_script(*args: str) -> tuple[bool, str]:
-    result = subprocess.run(
-        [sys.executable, *args],
-        cwd=PROJECT_ROOT,
-        capture_output=True,
-        text=True,
-    )
-    output = (result.stdout + result.stderr).strip()
-    return result.returncode == 0, output
-
-
-def read_json(path: str) -> dict | list | None:
-    file_path = PROJECT_ROOT / path
-    if not file_path.exists():
-        return None
-    return json.loads(file_path.read_text(encoding="utf-8"))
-
-
-def read_text(path: str) -> str:
-    file_path = PROJECT_ROOT / path
-    if not file_path.exists():
-        return "Artifact not generated yet."
-    return file_path.read_text(encoding="utf-8")
-
-
-def render_json(path: str) -> None:
-    payload = read_json(path)
-    if payload is None:
-        st.info("Artifact not generated yet.")
-        return
-    st.json(payload)
-
-
-def render_text(path: str, language: str = "markdown") -> None:
-    content = read_text(path)
-    if language == "markdown":
-        st.markdown(content)
-    else:
-        st.code(content, language=language)
+from app.ui_helpers import read_text, render_json, render_text, run_script
 
 
 def sidebar_actions(sample_id: str) -> None:
@@ -60,7 +15,7 @@ def sidebar_actions(sample_id: str) -> None:
         ("Export cloud session bundle", ["scripts/export_cloud_session_bundle.py", "--sample-id", sample_id]),
         ("Run cloud skill mock", ["scripts/run_cloud_reasoner_skill_mock.py", "--bundle", "cloud_session_bundle"]),
         ("Validate HE call plan", ["scripts/import_cloud_he_plan.py", "--plan", "demo_artifacts/04_reasoner/he_call_plan.json"]),
-        ("Run HE ops mock", ["scripts/run_he_ops_demo.py", "--sample-id", sample_id]),
+        ("Run Paillier HE ops", ["scripts/run_he_ops_demo.py", "--sample-id", sample_id]),
         ("Run local decryption and reassembly", ["scripts/run_e2e_demo.py", "--sample-id", sample_id]),
         ("Run leakage test", ["scripts/run_leakage_test.py", "--sample-id", sample_id]),
         ("Run correctness suite", ["scripts/run_correctness_suite.py", "--n", "64", "--seed", "42", "--threshold", "0.3", "--device", "auto"]),
@@ -84,9 +39,15 @@ def build_download_bundle() -> bytes:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Privacy-Preserving Expense Review Demo", layout="wide")
-    st.title("Privacy-Preserving Expense Review Demo")
-    st.caption("Local session, isolated cloud bundle, HE-style tool calls, and local-only reassembly.")
+    st.set_page_config(page_title="Mock Cloud Session Demo", layout="wide")
+    st.title("Mock Cloud Session Demo")
+    st.caption("This page shows the repository-internal mock path only.")
+    st.info(
+        "Provenance: these outputs come from the built-in mock reasoner in this repository. "
+        "Do not interpret them as results produced by a separately executed Codex session."
+    )
+    render_json("demo_artifacts/04_reasoner/mock_session_provenance.json")
+    st.page_link("pages/1_Manual_Codex_Session_Simulation.py", label="Open Manual Codex Session Simulation Page")
 
     sample_id = st.sidebar.text_input("Sample ID or index", value="0")
     if st.sidebar.button("Run full demo", use_container_width=True):
@@ -147,6 +108,9 @@ def main() -> None:
         with col2:
             st.markdown("#### Public Policy Summary")
             render_json("cloud_session_bundle/policy_public_summary.json")
+            st.markdown("#### Paillier Public HE Bundle")
+            render_json("cloud_session_bundle/he_public_key.json")
+            render_json("demo_artifacts/04_reasoner/real_he_encryption_report.json")
             st.markdown("#### No Raw Access Report")
             render_json("demo_artifacts/04_reasoner/cloud_session_no_raw_access_report.json")
 
@@ -163,6 +127,9 @@ def main() -> None:
 
     with tabs[4]:
         st.subheader("HE Ops Trace")
+        st.markdown("#### Paillier HE Execution Report")
+        render_json("demo_artifacts/05_reassembly/real_he_execution_report.json")
+        st.markdown("#### Encrypted Result Handles")
         render_json("demo_artifacts/05_reassembly/he_ops_results_encrypted_handles.json")
 
     with tabs[5]:
@@ -202,4 +169,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

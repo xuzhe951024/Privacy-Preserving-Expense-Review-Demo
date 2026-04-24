@@ -1,0 +1,62 @@
+[
+  {
+    "path": "OPEN_IN_SECOND_SESSION.md",
+    "sha256": "70aeabdb9b0a004834db37e4896e97e2d7ebeb5208535e0aa770e9556824a914"
+  },
+  {
+    "path": "README.md",
+    "sha256": "66e3fa560cfed2c5c54e44f666e5f645554daafa8af740ac8abb4b1b09ffc773"
+  },
+  {
+    "path": "cloud_session_bundle/README.md",
+    "sha256": "6183e371b1bdbde4bf77b1d567b3a61e062b1cae622a2bd9086571168c1e655a"
+  },
+  {
+    "path": "cloud_session_bundle/he_ciphertexts.json",
+    "sha256": "683e34f89e0b2d9d5de81a8df9db95de873b411d55e7fb2ac4da5a791ae5cbc7"
+  },
+  {
+    "path": "cloud_session_bundle/he_policy_operands.json",
+    "sha256": "04d3a5754757316f29dc52f4e959a2d508ff18958565d5aec00f77047984ea0a"
+  },
+  {
+    "path": "cloud_session_bundle/he_public_key.json",
+    "sha256": "b4fd54f6e85513e5519200ebec20d71ac6db1f33561fa2e009b9eec9fa309b26"
+  },
+  {
+    "path": "cloud_session_bundle/placeholder_metadata.json",
+    "sha256": "ed8d784116b26be9b4f8984e7da263761899676b73a913b4514187ec135d139b"
+  },
+  {
+    "path": "cloud_session_bundle/policy_public_summary.json",
+    "sha256": "69b4de613477d55ca4f73e27cde2a93dc78a32042bea63a6a4e43c38e99aba9a"
+  },
+  {
+    "path": "cloud_session_bundle/sanitized_request.json",
+    "sha256": "d9bc09b00504bd7a82b5ed994fd0ea8a68a8429c878f0428459acfa8adb6d4fc"
+  },
+  {
+    "path": "session_output/README.md",
+    "sha256": "47c86cdf4e2cf43ba8d95e35b0a9f61efcb7b0b6c6c75cd5a4d12fdff8eb6b14"
+  },
+  {
+    "path": "skills/privacy_expense_cloud_reasoner/SKILL.md",
+    "sha256": "1fd64a1606457f08236b2c8709a5aa7c8fe9fb6d03cb62029f1d7a88bf5e1984"
+  },
+  {
+    "path": "skills/privacy_expense_cloud_reasoner/schemas/cloud_reasoner_response.schema.json",
+    "sha256": "003ffc61da0151865393a2193a8ec311425fb079e03fac2d1cafcad570cf9cf7"
+  },
+  {
+    "path": "skills/privacy_expense_cloud_reasoner/schemas/he_call_plan.schema.json",
+    "sha256": "574073132536d952c04cb3a0404e2a408e50345f8617ebaedeebab92553c3883"
+  },
+  {
+    "path": "skills/privacy_expense_cloud_reasoner/schemas/sanitized_request.schema.json",
+    "sha256": "a1b0ba38f598f67795c3d68ccd9a4699ce87ca4d2679e652c39e5032cb61d447"
+  },
+  {
+    "path": "tools/run_real_he_eval.py",
+    "sha256": "62d0e20363d47708f4f233ef6d6d80123a228d29cda65b49917db60a1584feb2"
+  }
+]

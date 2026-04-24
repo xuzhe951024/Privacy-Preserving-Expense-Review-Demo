@@ -6,6 +6,7 @@ from pathlib import Path
 
 from src.cloud_reasoner_client import validate_against_schema
 from src.cloud_reasoner_mock import validate_authorized_he_ops
+from src.he_service import extract_plan_and_evaluation
 from src.report_writer import write_json
 
 
@@ -17,17 +18,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate and import a cloud-produced HE call plan.")
     parser.add_argument("--plan", default="demo_artifacts/04_reasoner/he_call_plan.json")
     parser.add_argument("--bundle", default="cloud_session_bundle")
+    parser.add_argument("--artifact-dir", default="demo_artifacts/04_reasoner")
     args = parser.parse_args()
 
-    plan = load_json(args.plan)
+    artifact_root = Path(args.artifact_dir)
+    input_payload = load_json(args.plan)
+    plan, he_evaluation = extract_plan_and_evaluation(input_payload)
     metadata = load_json(Path(args.bundle) / "placeholder_metadata.json")
     schema_validation = validate_against_schema(plan, "skills/privacy_expense_cloud_reasoner/schemas/he_call_plan.schema.json")
     authorization_report = validate_authorized_he_ops(plan, metadata)
-    write_json("demo_artifacts/04_reasoner/he_call_plan_schema_validation.json", schema_validation)
-    write_json("demo_artifacts/04_reasoner/he_call_authorization_report.json", authorization_report)
+    write_json(artifact_root / "cloud_skill_output.json", plan)
+    write_json(artifact_root / "he_call_plan.json", plan)
+    if he_evaluation is not None:
+        write_json(artifact_root / "cloud_he_evaluation.json", he_evaluation)
+    write_json(artifact_root / "he_call_plan_schema_validation.json", schema_validation)
+    write_json(artifact_root / "he_call_authorization_report.json", authorization_report)
     print(f"Plan validation complete: schema_valid={schema_validation['valid']}, authorized={authorization_report['authorized']}")
 
 
 if __name__ == "__main__":
     main()
-

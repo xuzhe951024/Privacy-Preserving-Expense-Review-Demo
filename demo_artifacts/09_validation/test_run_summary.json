@@ -1,12 +1,22 @@
 {
-  "status": "PASS",
+  "status": "FAIL",
   "dataset_size": 1000,
-  "macro_exact_f1": 0.9839,
-  "macro_relaxed_f1": 0.9946,
-  "replacement_accuracy": 1.0,
+  "macro_exact_f1": 0.9639,
+  "macro_relaxed_f1": 0.9857,
+  "replacement_accuracy": 0.999,
   "policy_accuracy": 1.0,
   "final_accuracy": 1.0,
-  "raw_leakage_count": 0,
+  "raw_leakage_count": 5,
   "audit_completeness": 1.0,
-  "failed_samples": []
+  "failed_samples": [
+    {
+      "sample_id": "exp_0657",
+      "replacement_ok": false,
+      "policy_ok": true,
+      "final_ok": true,
+      "audit_ok": true,
+      "expected_final_decision": "auto_approve",
+      "actual_final_decision": "auto_approve"
+    }
+  ]
 }

@@ -6,19 +6,17 @@ readme = "README.md"
 requires-python = ">=3.11,<3.15"
 dependencies = [
   "cryptography>=44.0.0",
+  "gliner>=0.2.26",
   "jsonschema>=4.23.0",
   "pandas>=2.2.3",
   "python-dotenv>=1.0.1",
   "rich>=13.9.4",
   "streamlit>=1.44.1",
+  "torch>=2.7.0",
 ]
 
 [project.optional-dependencies]
 cpu = []
-cu128 = []
-gliner = [
-  "gliner>=0.2.16",
-]
 
 [dependency-groups]
 dev = [
@@ -31,6 +29,14 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

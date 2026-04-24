@@ -8,3 +8,5 @@ __pycache__/
 .DS_Store
 .codex
 codex_privacy_expense_demo_implementation_guide_v0_4.md
+real_cloud_session/
+demo_artifacts/10_real_cloud_session/

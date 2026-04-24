@@ -12,7 +12,7 @@ ENTITY_POLICY = {
     "AMOUNT": {
         "action": "tokenize_encrypt",
         "allowed_ops": ["compare_policy_cap", "sum", "subtract"],
-        "allowed_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap", "fhe_sum_amounts", "fhe_min_policy_cap"],
+        "allowed_he_ops": ["fhe_subtract_policy_cap", "fhe_sum_amounts"],
     },
     "DATE": {
         "action": "tokenize_encrypt",
@@ -26,19 +26,15 @@ ENTITY_POLICY = {
 }
 
 ALLOWED_HE_OPS = {
-    "fhe_compare_policy_cap",
     "fhe_subtract_policy_cap",
     "fhe_sum_amounts",
     "fhe_compare_date_window",
-    "fhe_min_policy_cap",
 }
 
 HE_OP_TO_LOCAL_OP = {
-    "fhe_compare_policy_cap": "compare_policy_cap",
     "fhe_subtract_policy_cap": "subtract",
     "fhe_sum_amounts": "sum",
     "fhe_compare_date_window": "compare_submission_window",
-    "fhe_min_policy_cap": "compare_policy_cap",
 }
 
 POLICY_VALUES = {
@@ -54,27 +50,27 @@ PUBLIC_POLICY_SUMMARY = {
     "meal_cap_usd": {
         "scope": "local_only",
         "description": "Meal expenses require local cap validation.",
-        "supported_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap", "fhe_min_policy_cap"],
+        "supported_he_ops": ["fhe_subtract_policy_cap"],
     },
     "hotel_cap_usd": {
         "scope": "local_only",
         "description": "Hotel expenses require local cap validation.",
-        "supported_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap"],
+        "supported_he_ops": ["fhe_subtract_policy_cap"],
     },
     "airfare_cap_usd": {
         "scope": "local_only",
         "description": "Airfare expenses require local cap validation.",
-        "supported_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap"],
+        "supported_he_ops": ["fhe_subtract_policy_cap"],
     },
     "taxi_cap_usd": {
         "scope": "local_only",
         "description": "Taxi and rideshare expenses require local cap validation.",
-        "supported_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap"],
+        "supported_he_ops": ["fhe_subtract_policy_cap"],
     },
     "software_subscription_cap_usd": {
         "scope": "local_only",
         "description": "Software subscriptions require local cap validation.",
-        "supported_he_ops": ["fhe_compare_policy_cap", "fhe_subtract_policy_cap"],
+        "supported_he_ops": ["fhe_subtract_policy_cap"],
     },
     "submission_window_days": {
         "scope": "local_only",
@@ -98,4 +94,3 @@ def get_policy_value(policy_key: str) -> int | None:
 
 def token_label(label: str) -> str:
     return label.upper()
-

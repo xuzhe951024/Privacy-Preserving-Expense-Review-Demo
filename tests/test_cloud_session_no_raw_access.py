@@ -15,6 +15,9 @@ def test_cloud_bundle_has_no_raw_access(sample_client_dinner, tmp_path):
         sample_client_dinner,
         bundle_dir=tmp_path / "bundle",
         artifact_dir=tmp_path / "reasoner",
+        vault=vault,
+        he_key_path=tmp_path / "paillier.key.json",
     )
     assert exported["report"]["passed"] is True
-
+    assert (tmp_path / "bundle" / "he_public_key.json").exists()
+    assert (tmp_path / "bundle" / "he_ciphertexts.json").exists()

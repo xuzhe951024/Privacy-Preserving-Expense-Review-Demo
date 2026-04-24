@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from src.audit import AuditLogger
-from src.he_service_mock import load_private_he_results
+from src.he_service import load_private_he_results
 from src.models import ExpenseSample, SanitizedPayload
 from src.policy import get_policy_value
 from src.report_writer import write_json, write_markdown
@@ -35,36 +35,33 @@ def reassemble_results(
     for operation, encrypted_result in zip(he_plan.get("requested_he_ops", []), he_results.get("he_results", [])):
         result_handle = encrypted_result["result_handle"]
         decrypted = private_results[result_handle]
-        if operation["op"] == "fhe_compare_policy_cap":
-            compare_exceeds = bool(decrypted["value"])
-            local_ops_results.append(
-                {
-                    "op_id": operation["op_id"],
-                    "op": "compare_policy_cap",
-                    "ciphertext_handle": operation["ciphertext_handle"],
-                    "right_policy_key": operation["right_policy_key"],
-                    "interpreted_result": "exceeds" if compare_exceeds else "within_cap",
-                }
-            )
-        elif operation["op"] == "fhe_subtract_policy_cap":
+        if operation["op"] == "fhe_subtract_policy_cap":
             delta_cents = int(decrypted["value"])
+            compare_exceeds = delta_cents > 0
             local_ops_results.append(
                 {
                     "op_id": operation["op_id"],
-                    "op": "subtract",
+                    "op": "decrypt_policy_delta_and_compare_locally",
                     "ciphertext_handle": operation["ciphertext_handle"],
                     "right_policy_key": operation["right_policy_key"],
-                    "interpreted_result": delta_cents,
+                    "interpreted_result": {
+                        "delta_cents": delta_cents,
+                        "comparison": "exceeds" if compare_exceeds else "within_cap",
+                    },
                 }
             )
         elif operation["op"] == "fhe_compare_date_window":
+            date_delta = int(decrypted["value"])
             local_ops_results.append(
                 {
                     "op_id": operation["op_id"],
-                    "op": "compare_submission_window",
+                    "op": "decrypt_submission_window_delta_locally",
                     "ciphertext_handle": operation["ciphertext_handle"],
                     "right_policy_key": operation["right_policy_key"],
-                    "interpreted_result": bool(decrypted["value"]),
+                    "interpreted_result": {
+                        "delta_days": date_delta,
+                        "within_window": date_delta <= 0,
+                    },
                 }
             )
         elif operation["op"] == "fhe_sum_amounts":

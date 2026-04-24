@@ -1,0 +1,7 @@
+{
+  "scheme": "paillier",
+  "operation_mode": "public_key_homomorphic_evaluation",
+  "result_count": 3,
+  "store_path": ".local/he_results/exp_0001-fdde91d6.json",
+  "used_real_homomorphic_evaluation": true
+}

@@ -1,6 +1,6 @@
 {
-  "sample_id": "exp_1000",
-  "expected_final_decision": "needs_employee_followup",
-  "actual_final_decision": "needs_employee_followup",
+  "sample_id": "exp_0001",
+  "expected_final_decision": "needs_manager_approval",
+  "actual_final_decision": "needs_manager_approval",
   "passed": true
 }

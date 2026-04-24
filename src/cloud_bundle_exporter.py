@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
+from src.he_service import DEFAULT_HE_KEY_PATH, build_he_bundle_artifacts
+from src.leakage_scan import safe_file_text_for_leakage_scan
 from src.models import ExpenseSample, SanitizedPayload
 from src.report_writer import sha256_file, write_json, write_markdown
+from src.vault import Vault
 
 
 def export_cloud_bundle(
@@ -12,6 +14,8 @@ def export_cloud_bundle(
     sample: ExpenseSample,
     bundle_dir: str | Path = "cloud_session_bundle",
     artifact_dir: str | Path = "demo_artifacts/04_reasoner",
+    vault: Vault | None = None,
+    he_key_path: str | Path = DEFAULT_HE_KEY_PATH,
 ) -> dict[str, object]:
     bundle_root = Path(bundle_dir)
     bundle_root.mkdir(parents=True, exist_ok=True)
@@ -25,6 +29,17 @@ def export_cloud_bundle(
     metadata_path = write_json(bundle_root / "placeholder_metadata.json", sanitized_payload.metadata)
     request_path = write_json(bundle_root / "sanitized_request.json", sanitized_request)
     policy_path = write_json(bundle_root / "policy_public_summary.json", sanitized_payload.policy_summary)
+    he_export = None
+    if vault is not None:
+        he_export = build_he_bundle_artifacts(
+            sanitized_payload.session_id,
+            sanitized_payload.metadata,
+            vault,
+            bundle_dir=bundle_root,
+            artifact_dir=artifact_root,
+            key_path=he_key_path,
+        )
+
     write_markdown(
         bundle_root / "README.md",
         "\n".join(
@@ -33,8 +48,9 @@ def export_cloud_bundle(
                 "",
                 "This directory is safe to share with an isolated cloud-side reasoning session.",
                 "",
-                "- It contains sanitized text, placeholder metadata, and public policy summaries.",
+                "- It contains sanitized text, placeholder metadata, public policy summaries, and Paillier public-key ciphertexts.",
                 "- It does not contain raw expense text, vault contents, or local keys.",
+                "- HE evaluation can be performed with `he_public_key.json`, `he_ciphertexts.json`, and `he_policy_operands.json`.",
             ]
         ),
     )
@@ -49,7 +65,7 @@ def export_cloud_bundle(
     for path in bundle_root.glob("*"):
         if not path.is_file():
             continue
-        blob = path.read_text(encoding="utf-8")
+        blob = safe_file_text_for_leakage_scan(path)
         for value in raw_values:
             if value in blob:
                 leakage_hits.append({"file": path.name, "value": value})
@@ -67,5 +83,5 @@ def export_cloud_bundle(
         "report": report,
         "sanitized_request": sanitized_request,
         "metadata": sanitized_payload.metadata,
+        "he_export": he_export,
     }
-

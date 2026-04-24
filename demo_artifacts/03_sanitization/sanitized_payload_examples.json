@@ -1,7 +1,7 @@
 {
-  "sample_id": "exp_1000",
-  "session_id": "exp_1000-66a21619",
-  "sanitized_text": "Employee <PERSON_1> recorded a rideshare expense of <AMOUNT_1> on <DATE_1> with <VENDOR_1>. Employee ID <EMPLOYEE_ID_1>, invoice <INVOICE_ID_1>, card ending <CARD_LAST4_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>. Receipt attachment missing and the note says the expense might belong to a shared ride.",
+  "sample_id": "exp_0001",
+  "session_id": "exp_0001-fdde91d6",
+  "sanitized_text": "Employee <PERSON_1> <PERSON_2> submitted a team offsite meal summary: meal <AMOUNT_1>, tip <AMOUNT_2>, tax <AMOUNT_3> on <DATE_1> at vendor <VENDOR_1>. Invoice <INVOICE_ID_1>, project <PROJECT_CODE_1>, cost center <COST_CENTER_1>, employee ID <EMPLOYEE_ID_1>, email <EMAIL_1>, phone <PHONE_NUMBER_1>.",
   "metadata": {
     "PERSON_1": {
       "entity_type": "PERSON",
@@ -9,8 +9,17 @@
       "allowed_ops": [],
       "allowed_he_ops": [],
       "policy_action": "tokenize_encrypt",
-      "source": "gliner_heuristic",
-      "score": 0.64
+      "source": "gliner_native",
+      "score": 0.9966
+    },
+    "PERSON_2": {
+      "entity_type": "PERSON",
+      "placeholder": "<PERSON_2>",
+      "allowed_ops": [],
+      "allowed_he_ops": [],
+      "policy_action": "tokenize_encrypt",
+      "source": "gliner_native",
+      "score": 0.4614
     },
     "AMOUNT_1": {
       "entity_type": "AMOUNT",
@@ -21,10 +30,40 @@
         "subtract"
       ],
       "allowed_he_ops": [
-        "fhe_compare_policy_cap",
         "fhe_subtract_policy_cap",
-        "fhe_sum_amounts",
-        "fhe_min_policy_cap"
+        "fhe_sum_amounts"
+      ],
+      "policy_action": "tokenize_encrypt",
+      "source": "rule",
+      "score": 0.99
+    },
+    "AMOUNT_2": {
+      "entity_type": "AMOUNT",
+      "placeholder": "<AMOUNT_2>",
+      "allowed_ops": [
+        "compare_policy_cap",
+        "sum",
+        "subtract"
+      ],
+      "allowed_he_ops": [
+        "fhe_subtract_policy_cap",
+        "fhe_sum_amounts"
+      ],
+      "policy_action": "tokenize_encrypt",
+      "source": "rule",
+      "score": 0.99
+    },
+    "AMOUNT_3": {
+      "entity_type": "AMOUNT",
+      "placeholder": "<AMOUNT_3>",
+      "allowed_ops": [
+        "compare_policy_cap",
+        "sum",
+        "subtract"
+      ],
+      "allowed_he_ops": [
+        "fhe_subtract_policy_cap",
+        "fhe_sum_amounts"
       ],
       "policy_action": "tokenize_encrypt",
       "source": "rule",
@@ -49,17 +88,8 @@
       "allowed_ops": [],
       "allowed_he_ops": [],
       "policy_action": "tokenize_or_category",
-      "source": "gliner_heuristic",
-      "score": 0.56
-    },
-    "EMPLOYEE_ID_1": {
-      "entity_type": "EMPLOYEE_ID",
-      "placeholder": "<EMPLOYEE_ID_1>",
-      "allowed_ops": [],
-      "allowed_he_ops": [],
-      "policy_action": "tokenize_encrypt",
       "source": "rule",
-      "score": 0.99
+      "score": 0.97
     },
     "INVOICE_ID_1": {
       "entity_type": "INVOICE_ID",
@@ -70,9 +100,27 @@
       "source": "rule",
       "score": 0.99
     },
-    "CARD_LAST4_1": {
-      "entity_type": "CARD_LAST4",
-      "placeholder": "<CARD_LAST4_1>",
+    "PROJECT_CODE_1": {
+      "entity_type": "PROJECT_CODE",
+      "placeholder": "<PROJECT_CODE_1>",
+      "allowed_ops": [],
+      "allowed_he_ops": [],
+      "policy_action": "tokenize_encrypt",
+      "source": "rule",
+      "score": 0.99
+    },
+    "COST_CENTER_1": {
+      "entity_type": "COST_CENTER",
+      "placeholder": "<COST_CENTER_1>",
+      "allowed_ops": [],
+      "allowed_he_ops": [],
+      "policy_action": "tokenize_encrypt",
+      "source": "rule",
+      "score": 0.99
+    },
+    "EMPLOYEE_ID_1": {
+      "entity_type": "EMPLOYEE_ID",
+      "placeholder": "<EMPLOYEE_ID_1>",
       "allowed_ops": [],
       "allowed_he_ops": [],
       "policy_action": "tokenize_encrypt",
@@ -103,16 +151,13 @@
       "scope": "local_only",
       "description": "Meal expenses require local cap validation.",
       "supported_he_ops": [
-        "fhe_compare_policy_cap",
-        "fhe_subtract_policy_cap",
-        "fhe_min_policy_cap"
+        "fhe_subtract_policy_cap"
       ]
     },
     "hotel_cap_usd": {
       "scope": "local_only",
       "description": "Hotel expenses require local cap validation.",
       "supported_he_ops": [
-        "fhe_compare_policy_cap",
         "fhe_subtract_policy_cap"
       ]
     },
@@ -120,7 +165,6 @@
       "scope": "local_only",
       "description": "Airfare expenses require local cap validation.",
       "supported_he_ops": [
-        "fhe_compare_policy_cap",
         "fhe_subtract_policy_cap"
       ]
     },
@@ -128,7 +172,6 @@
       "scope": "local_only",
       "description": "Taxi and rideshare expenses require local cap validation.",
       "supported_he_ops": [
-        "fhe_compare_policy_cap",
         "fhe_subtract_policy_cap"
       ]
     },
@@ -136,7 +179,6 @@
       "scope": "local_only",
       "description": "Software subscriptions require local cap validation.",
       "supported_he_ops": [
-        "fhe_compare_policy_cap",
         "fhe_subtract_policy_cap"
       ]
     },
@@ -150,12 +192,12 @@
   },
   "public_context": {
     "workflow_type": "expense_review",
-    "expense_type": "taxi_rideshare",
+    "expense_type": "team_offsite",
     "currency": "USD",
-    "policy_key": "taxi_cap_usd",
-    "receipt_attached": false,
-    "requires_sum": false,
+    "policy_key": "meal_cap_usd",
+    "receipt_attached": true,
+    "requires_sum": true,
     "requires_cap_validation": true,
-    "note_is_ambiguous": true
+    "amount_handles_expected": 3
   }
 }

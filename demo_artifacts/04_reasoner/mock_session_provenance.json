@@ -1,0 +1,7 @@
+{
+  "session_label": "mock_cloud_session",
+  "execution_mode": "repository_internal_mock",
+  "producer": "src.cloud_reasoner_mock.build_cloud_skill_response",
+  "separate_codex_session": false,
+  "interpretation_note": "This artifact was produced by the repository-internal mock reasoner. Use it as a baseline or control path, not as output from a separately executed Codex session."
+}

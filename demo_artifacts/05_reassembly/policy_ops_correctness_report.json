@@ -1,8 +1,8 @@
 {
-  "sample_id": "exp_1000",
-  "expected_compare_result": "within_cap",
-  "actual_compare_result": "within_cap",
-  "expected_delta_usd": "0.10",
-  "actual_delta_usd": "0.10",
+  "sample_id": "exp_0001",
+  "expected_compare_result": "exceeds",
+  "actual_compare_result": "exceeds",
+  "expected_delta_usd": "22.15",
+  "actual_delta_usd": "22.15",
   "passed": true
 }

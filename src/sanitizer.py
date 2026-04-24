@@ -37,6 +37,20 @@ def _run_no_raw_leakage_guard(payload: dict[str, Any], entities: list[DetectedEn
     }
 
 
+def _sanitize_context_value(value: Any, redaction_pairs: list[tuple[str, str]]) -> Any:
+    if isinstance(value, dict):
+        return {key: _sanitize_context_value(item, redaction_pairs) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_context_value(item, redaction_pairs) for item in value]
+    if isinstance(value, str):
+        redacted = value
+        for raw_value, placeholder in redaction_pairs:
+            if raw_value:
+                redacted = redacted.replace(raw_value, placeholder)
+        return redacted
+    return value
+
+
 def sanitize_sample(
     sample: ExpenseSample,
     entities: list[DetectedEntity],
@@ -49,6 +63,7 @@ def sanitize_sample(
     token_preview: list[dict[str, Any]] = []
     metadata: dict[str, dict[str, Any]] = {}
     replacement_ranges: list[tuple[int, int, str]] = []
+    redaction_pairs: list[tuple[str, str]] = []
 
     for entity in entities:
         policy = get_entity_policy(entity.label)
@@ -59,6 +74,7 @@ def sanitize_sample(
         placeholder = f"<{token}>"
         preview = vault.put_secret(session, token, entity.label, entity.text, entity.normalized_value)
         token_preview.append(preview)
+        redaction_pairs.append((entity.text, placeholder))
         metadata[token] = {
             "entity_type": entity.label,
             "placeholder": placeholder,
@@ -73,6 +89,10 @@ def sanitize_sample(
     sanitized_text = sample.raw_text
     for start, end, placeholder in sorted(replacement_ranges, key=lambda item: item[0], reverse=True):
         sanitized_text = sanitized_text[:start] + placeholder + sanitized_text[end:]
+    sanitized_public_context = _sanitize_context_value(
+        sample.workflow_context,
+        sorted(redaction_pairs, key=lambda item: len(item[0]), reverse=True),
+    )
 
     replacement_report = {
         "total_detected_sensitive_entities": len(replacement_ranges),
@@ -88,7 +108,7 @@ def sanitize_sample(
         "sanitized_text": sanitized_text,
         "metadata": metadata,
         "policy_summary": get_public_policy_summary(),
-        "public_context": sample.workflow_context,
+        "public_context": sanitized_public_context,
     }
     leakage_check = _run_no_raw_leakage_guard(payload, entities)
 
@@ -110,7 +130,7 @@ def sanitize_sample(
             "sanitized_text": sanitized_text,
             "metadata": metadata,
             "policy_summary": get_public_policy_summary(),
-            "public_context": sample.workflow_context,
+            "public_context": sanitized_public_context,
         },
     )
     write_json(artifact_root / "token_mapping_redacted_preview.json", token_preview)
@@ -124,9 +144,8 @@ def sanitize_sample(
         sanitized_text=sanitized_text,
         metadata=metadata,
         policy_summary=get_public_policy_summary(),
-        public_context=sample.workflow_context,
+        public_context=sanitized_public_context,
         replacement_report=replacement_report,
         leakage_check=leakage_check,
         token_preview=token_preview,
     )
-

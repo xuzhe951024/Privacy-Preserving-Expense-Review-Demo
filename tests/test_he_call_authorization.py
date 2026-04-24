@@ -4,7 +4,7 @@ from src.cloud_reasoner_mock import validate_authorized_he_ops
 
 
 def test_unauthorized_he_ops_are_rejected():
-    metadata = {"AMOUNT_1": {"entity_type": "AMOUNT", "allowed_he_ops": ["fhe_compare_policy_cap"]}}
+    metadata = {"AMOUNT_1": {"entity_type": "AMOUNT", "allowed_he_ops": ["fhe_subtract_policy_cap"]}}
     invalid_plan = {
         "requested_he_ops": [
             {
@@ -17,4 +17,3 @@ def test_unauthorized_he_ops_are_rejected():
     }
     report = validate_authorized_he_ops(invalid_plan, metadata)
     assert report["authorized"] is False
-

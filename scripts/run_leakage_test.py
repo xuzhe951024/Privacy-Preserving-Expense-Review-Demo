@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from src.demo_workflow import run_demo_flow
+from src.leakage_scan import safe_file_text_for_leakage_scan
 from src.pipeline import load_samples_from_truth, select_sample
 from src.report_writer import write_json, write_markdown
 from src.synthetic_data import generate_samples, save_dataset
@@ -46,7 +47,7 @@ def main() -> None:
     sanitized_payload = load_json("demo_artifacts/03_sanitization/sanitized_payload_examples.json")
     cloud_request = load_json("demo_artifacts/04_reasoner/cloud_request_mock.json")
     bundle_files = {
-        path.name: path.read_text(encoding="utf-8")
+        path.name: safe_file_text_for_leakage_scan(path)
         for path in Path("cloud_session_bundle").glob("*")
         if path.is_file()
     }
@@ -125,4 +126,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

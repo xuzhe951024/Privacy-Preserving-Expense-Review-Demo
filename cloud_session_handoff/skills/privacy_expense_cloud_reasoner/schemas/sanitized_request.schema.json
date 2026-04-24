@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sanitized Request",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "session_id",
+    "sanitized_text",
+    "metadata",
+    "policy_summary",
+    "public_context"
+  ],
+  "properties": {
+    "sample_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "sanitized_text": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "entity_type",
+          "placeholder",
+          "policy_action"
+        ],
+        "properties": {
+          "entity_type": {
+            "type": "string"
+          },
+          "placeholder": {
+            "type": "string"
+          },
+          "allowed_ops": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allowed_he_ops": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "policy_action": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "policy_summary": {
+      "type": "object"
+    },
+    "public_context": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
+

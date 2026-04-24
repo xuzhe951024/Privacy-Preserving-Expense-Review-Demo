@@ -3,12 +3,26 @@
   "architecture": "x86_64",
   "python_version": "3.12.12 (main, Oct 10 2025, 08:52:57) [GCC 11.4.0]",
   "uv_available": true,
-  "torch_installed": false,
-  "torch_cuda_available": false,
-  "recommended_mode": "cpu",
+  "torch_installed": true,
+  "torch_cuda_available": true,
+  "torch_version": "2.11.0+cu128",
+  "torch_cuda_version": "12.8",
+  "gpu_device_names": [
+    "NVIDIA GeForce RTX 5090"
+  ],
+  "gliner_installed": true,
+  "resolved_device": "cuda",
+  "recommended_mode": "gpu_default",
+  "local_cache_paths": {
+    "local_root": "/home/zhexu/privacy-preserving-demo/.local",
+    "hf_home": "/home/zhexu/privacy-preserving-demo/.local/hf-home",
+    "hf_hub_cache": "/home/zhexu/privacy-preserving-demo/.local/hf-home/hub",
+    "transformers_cache": "/home/zhexu/privacy-preserving-demo/.local/hf-home/transformers",
+    "torch_home": "/home/zhexu/privacy-preserving-demo/.local/torch-home"
+  },
   "notes": [
     "The demo runs in a local virtual environment managed by uv.",
-    "CPU fallback is supported even when GPU access is blocked or torch is unavailable.",
+    "The default runtime prefers GPU when CUDA is available and falls back to CPU otherwise.",
     "No system Python, driver, Docker, or service configuration changes were performed by this script."
   ]
 }

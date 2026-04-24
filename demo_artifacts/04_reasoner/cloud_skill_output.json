@@ -2,22 +2,26 @@
   "workflow_type": "expense_review",
   "decision": "needs_he_ops",
   "non_sensitive_reasoning": [
-    "The sanitized expense appears to be a taxi_rideshare.",
-    "Sensitive numeric placeholders require local HE-style policy validation."
+    "The sanitized expense appears to be a team_offsite.",
+    "Sensitive numeric placeholders require Paillier encrypted policy validation."
   ],
   "requested_he_ops": [
     {
       "op_id": "op_001",
-      "op": "fhe_compare_policy_cap",
-      "ciphertext_handle": "AMOUNT_1",
-      "right_policy_key": "taxi_cap_usd",
-      "return_as": "encrypted_bool"
+      "op": "fhe_sum_amounts",
+      "ciphertext_handles": [
+        "AMOUNT_1",
+        "AMOUNT_2",
+        "AMOUNT_3"
+      ],
+      "result_handle": "AMOUNT_SUM_1",
+      "return_as": "encrypted_cents"
     },
     {
       "op_id": "op_002",
       "op": "fhe_subtract_policy_cap",
-      "ciphertext_handle": "AMOUNT_1",
-      "right_policy_key": "taxi_cap_usd",
+      "ciphertext_handle": "AMOUNT_SUM_1",
+      "right_policy_key": "meal_cap_usd",
       "return_as": "encrypted_cents"
     },
     {
@@ -25,10 +29,8 @@
       "op": "fhe_compare_date_window",
       "ciphertext_handle": "DATE_1",
       "right_policy_key": "submission_window_days",
-      "return_as": "encrypted_bool"
+      "return_as": "encrypted_days_delta"
     }
   ],
-  "missing_items": [
-    "receipt"
-  ]
+  "missing_items": []
 }

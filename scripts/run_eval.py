@@ -24,10 +24,18 @@ def aggregate_macro_f1(metrics: list[dict[str, object]], key: str) -> float:
     return round(mean(values), 4) if values else 0.0
 
 
-def run_threshold_summary(samples: list, threshold: float, device: str) -> dict[str, object]:
+def _progress(label: str, index: int, total: int, progress_every: int) -> None:
+    if progress_every <= 0:
+        return
+    if index == total or index % progress_every == 0:
+        print(f"{label}: {index}/{total}", flush=True)
+
+
+def run_threshold_summary(samples: list, threshold: float, device: str, progress_every: int = 0) -> dict[str, object]:
     truth_records = [sample.truth_record() for sample in samples]
     prediction_records = []
-    for sample in samples:
+    total = len(samples)
+    for index, sample in enumerate(samples, start=1):
         detection = detect_sample(sample, threshold=threshold, device=device)
         prediction_records.append(
             {
@@ -35,6 +43,7 @@ def run_threshold_summary(samples: list, threshold: float, device: str) -> dict[
                 "predictions": [entity.to_dict() for entity in detection["resolved_entities"]],
             }
         )
+        _progress(f"Threshold {threshold}", index, total, progress_every)
     summary = summarize_detection(truth_records, prediction_records)
     return {
         "threshold": threshold,
@@ -47,13 +56,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate detection quality.")
     parser.add_argument("--threshold", type=float, default=0.3)
     parser.add_argument("--device", default="auto")
+    parser.add_argument("--progress-every", type=int, default=0)
     args = parser.parse_args()
 
     samples = ensure_samples()
     truth_records = [sample.truth_record() for sample in samples]
     prediction_records = []
     detector_status_rows = []
-    for sample in samples:
+    total = len(samples)
+    for index, sample in enumerate(samples, start=1):
         detection = detect_sample(sample, threshold=args.threshold, device=args.device)
         prediction_records.append(
             {
@@ -62,9 +73,13 @@ def main() -> None:
             }
         )
         detector_status_rows.append({"sample_id": sample.sample_id, **detection["gliner_status"]})
+        _progress("Detection evaluation", index, total, args.progress_every)
 
     summary = summarize_detection(truth_records, prediction_records)
-    threshold_rows = [run_threshold_summary(samples, threshold, args.device) for threshold in [0.2, 0.3, 0.35, 0.5]]
+    threshold_rows = [
+        run_threshold_summary(samples, threshold, args.device, progress_every=args.progress_every)
+        for threshold in [0.2, 0.3, 0.35, 0.5]
+    ]
 
     write_json(
         "demo_artifacts/02_detection/detection_samples.json",
@@ -85,4 +100,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
